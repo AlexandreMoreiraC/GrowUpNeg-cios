@@ -21,16 +21,6 @@ import CookieBanner from "./components/CookieBanner";
 
 import { auth } from "./services/firebase";
 
-import "./styles/global.css";
-import "./styles/contato.css";
-import "./styles/navbar.css";
-import "./styles/footer.css";
-import "./styles/pages.css";
-import "./styles/contactform.css";
-import "./styles/postcard.css";
-import "./styles/adminhome.css";
-import "./styles/login.css";
-
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
