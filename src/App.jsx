@@ -29,6 +29,8 @@ import "./styles/pages.css";
 import "./styles/contactform.css";
 import "./styles/postcard.css";
 import "./styles/adminhome.css";
+import "./styles/login.css";
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

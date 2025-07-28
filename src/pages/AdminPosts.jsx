@@ -10,7 +10,7 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
-import { db } from "../services/Firebase";
+import { db } from "../services/firebase";
 import "../styles/adminposts.css";
 
 export default function AdminPosts() {
