@@ -1,0 +1,102 @@
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center; /* Centraliza os filhos horizontalmente */
+}
+
+.contact-form label {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+  align-self: flex-start; /* Deixa os labels alinhados à esquerda */
+  width: 100%;
+  max-width: 600px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  max-width: 600px; /* limita a largura máxima */
+  padding: 14px 18px;
+  font-size: 1rem;
+  border: 1.8px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #444;
+  font-family: inherit;
+  margin: 0 auto; /* centraliza */
+  box-sizing: border-box;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ff5a5f;
+  box-shadow: 0 0 6px rgba(255, 90, 95, 0.3);
+  outline: none;
+  background-color: #fff;
+}
+
+.contact-form button {
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  padding: 16px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 15px rgba(255, 90, 95, 0.4);
+  font-family: inherit;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.contact-form button:hover,
+.contact-form button:focus {
+  background-color: #e0484d;
+  box-shadow: 0 8px 20px rgba(224, 72, 77, 0.6);
+  outline: none;
+}
+
+.form-status {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #28a745;
+  font-size: 1rem;
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 600px) {
+  .contact-form {
+    gap: 18px;
+    padding: 0 10px;
+  }
+  
+  .contact-form button {
+    font-size: 1rem;
+    padding: 14px;
+  }
+}

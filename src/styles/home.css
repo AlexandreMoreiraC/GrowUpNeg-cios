@@ -1,0 +1,142 @@
+/* Container geral com duas colunas */
+.home-container {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  gap: 30px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.home-main {
+  flex: 0 0 70%;
+}
+
+/* Título e texto principal */
+.home-main h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: #2a9d8f;
+  letter-spacing: 0.02em;
+}
+
+.home-main p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  color: #444;
+}
+
+/* Conteúdo principal */
+.home-content {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgb(0 0 0 / 0.08);
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.6;
+  user-select: text;
+}
+
+/* Sidebar com 30% da largura */
+.home-sidebar {
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Espaço para anúncios */
+.ad-space {
+  background: #e7f3f1;
+  border: 2.5px dashed #2a9d8f;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  color: #2a9d8f;
+  font-weight: 700;
+  font-size: 1.1rem;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.ad-space:hover {
+  background-color: #d0e7e4;
+  cursor: pointer;
+}
+
+/* Lista de posts recentes */
+.recent-posts h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #2a9d8f;
+  letter-spacing: 0.01em;
+  border-bottom: 2px solid #2a9d8f;
+  padding-bottom: 6px;
+}
+
+.recent-posts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-posts li {
+  margin-bottom: 14px;
+}
+
+.recent-posts a {
+  color: #2a9d8f;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  display: inline-block;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.recent-posts a:hover,
+.recent-posts a:focus {
+  text-decoration: underline;
+  color: #1e6e61;
+  outline: none;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 900px) {
+  .home-container {
+    flex-direction: column;
+    padding: 1rem;
+    margin: 1.5rem auto;
+  }
+
+  .home-main,
+  .home-sidebar {
+    flex: 1 1 100%;
+  }
+
+  .home-sidebar {
+    margin-top: 3rem;
+  }
+
+  .ad-space {
+    min-height: 150px;
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .recent-posts h3 {
+    font-size: 1.25rem;
+  }
+}
