@@ -13,12 +13,29 @@ import {
 import { db } from "../services/firebase";
 import "../styles/adminposts.css";
 
+const categorias = [
+  "Marketing Digital",
+  "Negócios Locais",
+  "E-commerce",
+  "Produtividade",
+  "Finanças",
+  "Tecnologia",
+  "Sustentabilidade",
+  "Carreira e Desenvolvimento",
+  "Ideias de Negócio",
+  "Empreendedorismo para Iniciantes",
+  "Ferramentas e Plataformas",
+  "Histórias de Sucesso",
+  "Marketing e Vendas",
+];
+
 export default function AdminPosts() {
   const editorRef = useRef(null);
   const [posts, setPosts] = useState([]);
   const [titulo, setTitulo] = useState("");
   const [autor, setAutor] = useState("");
   const [dataPublicacao, setDataPublicacao] = useState("");
+  const [categoria, setCategoria] = useState(categorias[0]);
   const [imageUrl, setImageUrl] = useState("");
   const [editingId, setEditingId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -74,6 +91,7 @@ export default function AdminPosts() {
           autor,
           conteudo,
           dataPublicacao,
+          category: categoria,
           updatedAt: serverTimestamp(),
         });
         alert("Crônica atualizada com sucesso!");
@@ -83,6 +101,7 @@ export default function AdminPosts() {
           autor,
           conteudo,
           dataPublicacao,
+          category: categoria,
           createdAt: serverTimestamp(),
         });
         alert("Crônica publicada com sucesso!");
@@ -90,6 +109,7 @@ export default function AdminPosts() {
       setTitulo("");
       setAutor("");
       setDataPublicacao("");
+      setCategoria(categorias[0]);
       editorRef.current.innerHTML = "";
       setEditingId(null);
       fetchPosts();
@@ -105,10 +125,7 @@ export default function AdminPosts() {
     const imgs = tempDiv.querySelectorAll("img");
     imgs.forEach((img) => img.remove());
     const textoLimpo = tempDiv.textContent || tempDiv.innerText || "";
-    if (textoLimpo.length > 150) {
-      return textoLimpo.substring(0, 150) + "...";
-    }
-    return textoLimpo;
+    return textoLimpo.length > 150 ? textoLimpo.substring(0, 150) + "..." : textoLimpo;
   };
 
   const handleDelete = async (id) => {
@@ -128,6 +145,7 @@ export default function AdminPosts() {
     setAutor(post.autor);
     setDataPublicacao(post.dataPublicacao || "");
     editorRef.current.innerHTML = post.conteudo;
+    setCategoria(post.category || categorias[0]);
     setEditingId(post.id);
     window.scrollTo({ top: 0, behavior: "smooth" });
     editorRef.current.focus();
@@ -141,7 +159,7 @@ export default function AdminPosts() {
 
   return (
     <div className="admin-container">
-      <h1>Administração de Crônicas</h1>
+      <h1>Administração de Artigos</h1>
 
       <input
         type="text"
@@ -166,6 +184,21 @@ export default function AdminPosts() {
         onChange={(e) => setDataPublicacao(e.target.value)}
         className="admin-input"
       />
+
+      <label>
+        Categoria:
+        <select
+          value={categoria}
+          onChange={(e) => setCategoria(e.target.value)}
+          className="admin-input"
+        >
+          {categorias.map((cat) => (
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
+          ))}
+        </select>
+      </label>
 
       <div className="editor-toolbar">
         <button onClick={() => exec("bold")}><b>B</b></button>
@@ -195,7 +228,7 @@ export default function AdminPosts() {
           style={{ width: "200px", marginLeft: "auto" }}
         />
         <button onClick={handleImageInsert}>Inserir Imagem</button>
-        <button onClick={() => exec("removeFormat")} style={{ color: "red" }}>
+        <button onClick={() => exec("removeFormat")} style={{ color: "white" }}>
           Limpar
         </button>
       </div>
@@ -211,7 +244,7 @@ export default function AdminPosts() {
         {editingId ? "Salvar alterações" : "Publicar"}
       </button>
 
-      <h2>Crônicas Publicadas</h2>
+      <h2>Artigos Publicados</h2>
 
       <input
         type="text"
@@ -229,6 +262,7 @@ export default function AdminPosts() {
             <h3>{post.titulo}</h3>
             <p className="italic">{post.autor}</p>
             <p className="post-date">Publicado em: {post.dataPublicacao || "Data indisponível"}</p>
+            <p>Categoria: {post.category || "—"}</p>
             <p>{getResumo(post.conteudo)}</p>
             <div className="post-card-footer">
               <button onClick={() => handleEdit(post)} className="post-card-btn edit">

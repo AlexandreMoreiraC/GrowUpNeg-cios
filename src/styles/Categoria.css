@@ -1,0 +1,90 @@
+.posts-list {
+  max-width: 900px;
+  margin: 40px auto 80px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+.posts-list h2 {
+  font-size: 2rem;
+  color: #1d3557;
+  margin-bottom: 1.5rem;
+  text-transform: capitalize;
+  font-weight: 700;
+  text-align: center;
+}
+
+.post-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  color: #000;
+  user-select: text;
+}
+
+.post-card:hover,
+.post-card:focus-visible {
+  outline: none;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.post-card:focus {
+  outline: 3px solid #e63946;
+  outline-offset: 4px;
+}
+
+.post-card h3 {
+  font-size: 1.5rem;
+  margin: 0 0 0.25rem 0;
+  color: #1d3557;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.post-card .italic {
+  font-style: italic;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.post-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #444;
+  margin: 0.4rem 0;
+}
+
+.post-card p:nth-last-child(1) {
+  margin-top: 1rem;
+  /* Esse é o resumo do post, mantemos texto normal e user-select */
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .posts-list {
+    padding: 0 10px;
+  }
+
+  .posts-list h2 {
+    font-size: 1.5rem;
+  }
+
+  .post-card {
+    padding: 1rem 1rem;
+  }
+
+  .post-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .post-card p {
+    font-size: 0.95rem;
+  }
+}

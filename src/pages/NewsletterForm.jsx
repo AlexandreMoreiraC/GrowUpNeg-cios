@@ -1,5 +1,5 @@
-// NewsletterForm.jsx
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 import "../styles/newsletter.css";
 
 function NewsletterForm() {
@@ -10,11 +10,26 @@ function NewsletterForm() {
     e.preventDefault();
     if (!email.trim()) return;
 
-    // Aqui você pode integrar com Firebase, Mailchimp, etc.
-    setStatus("Inscrição realizada com sucesso!");
-    setEmail("");
-
-    setTimeout(() => setStatus(null), 5000);
+    emailjs
+      .send(
+        "service_4rkvyvs",
+        "template_3qahcxf",
+        {
+          user_email: email,
+          subscribe_time: new Date().toLocaleString(),
+        },
+        "PgxHQsJgnsH0IoVii"
+      )
+      .then(() => {
+        setStatus("Inscrição realizada com sucesso!");
+        setEmail("");
+        setTimeout(() => setStatus(null), 5000);
+      })
+      .catch((err) => {
+        setStatus("Erro ao enviar, tente novamente.");
+        console.error("Erro EmailJS:", err);
+        setTimeout(() => setStatus(null), 5000);
+      });
   }
 
   return (
@@ -22,8 +37,10 @@ function NewsletterForm() {
       <h3>Newsletter</h3>
       <p>Receba novidades, dicas e conteúdos exclusivos diretamente no seu email.</p>
       <div className="newsletter-inputs">
+        {/* Importante para casar com o template */}
         <input
           type="email"
+          name="user_email"
           placeholder="Seu email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

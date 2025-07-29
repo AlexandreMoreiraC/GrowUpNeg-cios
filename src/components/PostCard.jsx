@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import "../styles/postcard.css";
-import "../styles/global.css";
 
 function PostCard({ post }) {
   const formatDate = (dateStr) => {

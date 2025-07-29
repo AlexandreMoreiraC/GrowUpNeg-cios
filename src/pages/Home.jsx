@@ -135,7 +135,11 @@ function Home() {
                     Tem uma ideia de negócio? Envie para nós! Analisamos cuidadosamente cada proposta para ajudar você a entender sua viabilidade, identificar pontos fortes e desafios, e dar orientações para transformar sua ideia em um projeto de sucesso.
                   </p>
                 )}
+                <Link to="/contato" className="contact-button">
+                  Ir para Contato
+                </Link>
               </section>
+              
 
               <section className="why-choose-us" aria-label="Por que escolher o GrowUpNegócio">
                 <h2>Por que escolher o GrowUpNegócio?</h2>

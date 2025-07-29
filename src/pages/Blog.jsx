@@ -4,8 +4,10 @@ import { db } from "../services/firebase";
 import PostCard from "../components/PostCard";
 import { Helmet } from "react-helmet";
 import NewsletterForm from "./NewsletterForm";
+import { Link } from "react-router-dom";
 import "../styles/pages.css";
 import "../styles/global.css";
+import "../styles/Blog.css";
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
@@ -19,7 +21,7 @@ export default function Blog() {
         const postsRef = collection(db, "posts");
         const q = query(postsRef, orderBy("createdAt", "desc"));
         const querySnapshot = await getDocs(q);
-        const postsArray = querySnapshot.docs.map(doc => {
+        const postsArray = querySnapshot.docs.map((doc) => {
           const data = doc.data();
           return {
             id: doc.id,
@@ -27,6 +29,8 @@ export default function Blog() {
             autor: data.autor || "",
             conteudo: data.conteudo || "",
             imageUrl: data.imageUrl || "",
+            category: data.category || "",
+            subcategory: data.subcategory || "",
             createdAt: data.createdAt ? data.createdAt.toDate().toISOString() : null,
           };
         });
@@ -40,7 +44,7 @@ export default function Blog() {
     fetchPosts();
   }, []);
 
-  const filteredPosts = posts.filter(post => {
+  const filteredPosts = posts.filter((post) => {
     const term = searchTerm.toLowerCase();
     return (
       post.titulo.toLowerCase().includes(term) ||
@@ -48,8 +52,10 @@ export default function Blog() {
     );
   });
 
+  const recentPosts = posts.slice(0, 5);
+
   return (
-    <section className="blog">
+    <section className="blog" style={{ padding: "2rem" }}>
       <Helmet>
         <title>Blog GrowUpNegócio - Dicas e Inspirações para Empreendedores</title>
         <meta
@@ -86,12 +92,26 @@ export default function Blog() {
       ) : filteredPosts.length === 0 ? (
         <p>Nenhum post encontrado.</p>
       ) : (
-        <div className="posts-list">
-          {filteredPosts.map(post => (
+        <div className="posts-list" style={{ marginTop: "1rem" }}>
+          {filteredPosts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}
         </div>
       )}
+
+      <h3 style={{ marginTop: "3rem" }}>Posts Recentes</h3>
+      <ul>
+        {recentPosts.map((post) => (
+          <li key={post.id} style={{ margin: "0.5rem 0" }}>
+            <Link
+              to={`/post/${post.id}`}
+              style={{ color: "#1d3557", textDecoration: "none" }}
+            >
+              {post.titulo} <small>({post.category} / {post.subcategory})</small>
+            </Link>
+          </li>
+        ))}
+      </ul>
 
       <div style={{ marginTop: "40px" }}>
         <NewsletterForm />

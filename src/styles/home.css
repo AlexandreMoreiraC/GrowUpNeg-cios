@@ -1,4 +1,3 @@
-/* Container geral com duas colunas */
 .home-container {
   max-width: 1200px;
   margin: 3rem auto;
@@ -16,12 +15,11 @@
   flex: 0 0 70%;
 }
 
-/* Título e texto principal */
 .home-main h2 {
   font-size: 2.4rem;
   font-weight: 700;
   margin-bottom: 1.25rem;
-  color: #2a9d8f;
+  color: #1d3557;
   letter-spacing: 0.02em;
 }
 
@@ -32,7 +30,6 @@
   color: #444;
 }
 
-/* Conteúdo principal */
 .home-content {
   background: #f9f9f9;
   border-radius: 12px;
@@ -44,7 +41,6 @@
   user-select: text;
 }
 
-/* Sidebar com 30% da largura */
 .home-sidebar {
   flex: 0 0 30%;
   display: flex;
@@ -52,7 +48,6 @@
   gap: 3rem;
 }
 
-/* Espaço para anúncios */
 .ad-space {
   background: #e7f3f1;
   border: 2.5px dashed #2a9d8f;
@@ -74,12 +69,11 @@
   cursor: pointer;
 }
 
-/* Lista de posts recentes */
 .recent-posts h3 {
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #2a9d8f;
+  color: #9d2a2a;
   letter-spacing: 0.01em;
   border-bottom: 2px solid #2a9d8f;
   padding-bottom: 6px;
@@ -96,7 +90,7 @@
 }
 
 .recent-posts a {
-  color: #2a9d8f;
+  color: #000000;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.05rem;
@@ -108,12 +102,13 @@
 
 .recent-posts a:hover,
 .recent-posts a:focus {
-  text-decoration: underline;
-  color: #1e6e61;
+  color: #181d1c;
   outline: none;
+  font-size: 1.1rem;
+  transition: font-size 0.3s ease;
 }
 
-/* Responsividade para telas menores */
+
 @media (max-width: 900px) {
   .home-container {
     flex-direction: column;
@@ -139,4 +134,46 @@
   .recent-posts h3 {
     font-size: 1.25rem;
   }
+}
+.send-idea-button {
+ display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: orange;
+  color: white;
+  border: 2px solid white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.send-idea-button:hover {
+ background-color: rgb(255, 106, 0);
+  color: #ffffff;
+  text-shadow: none;
+  outline: none;
+  text-decoration: none;
+}
+.contact-button {
+display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #ff5a5f;
+  color: white;
+  border: 2px solid white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-button:hover {
+ background-color: #fe3f46;
+  color: #ffffff;
+  text-shadow: none;
+  outline: none;
+  text-decoration: none;
 }

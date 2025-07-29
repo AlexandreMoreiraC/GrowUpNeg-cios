@@ -56,8 +56,16 @@ function Post() {
 
       <h1 tabIndex={0}>{post.titulo || "Sem título"}</h1>
       <p><em>Por {post.autor || "Desconhecido"}</em></p>
-      {post.dataPublicacao && (
-        <p><small>Publicado em: {post.dataPublicacao}</small></p>
+      {post.createdAt && (
+      <p><small>Publicado em: {post.createdAt.toDate().toLocaleDateString('pt-BR')}</small></p>
+      )}
+      {post.category && post.subcategory && (
+        <p>
+          Categoria: <Link to={`/categoria/${post.category.toLowerCase().replace(/ /g, '-')}`}>{post.category}</Link> &gt;{" "}
+          <Link to={`/categoria/${post.category.toLowerCase().replace(/ /g, '-')}/${post.subcategory.toLowerCase().replace(/ /g, '-')}`}>
+            {post.subcategory}
+          </Link>
+        </p>
       )}
       <div
         className="post-content"

@@ -51,19 +51,22 @@ function Navbar() {
           </Link>
         </h1>
         <ul>
-          <li>
-            <Link to="/">Início</Link>
-          </li>
-          <li>
-            <Link to="/blog">Blog</Link>
-          </li>
-          <li>
-            <Link to="/sobre">Sobre</Link>
-          </li>
-          <li>
-            <Link to="/contato">Contato</Link>
-          </li>
-        </ul>
+  <li>
+    <Link to="/">Início</Link>
+  </li>
+  <li>
+    <Link to="/blog">Blog</Link>
+  </li>
+  <li>
+    <Link to="/Categorias">Categorias</Link>
+  </li>
+  <li>
+    <Link to="/sobre">Sobre</Link>
+  </li>
+  <li>
+    <Link to="/contato">Contato</Link>
+  </li>
+</ul>
       </nav>
     </>
   );

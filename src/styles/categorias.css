@@ -1,0 +1,75 @@
+/* categorias.css */
+
+.categorias-container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  text-align: center;
+}
+
+.categorias-titulo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #e0484d; /* vermelho vibrante */
+}
+
+.categorias-subtitulo {
+  font-size: 1.6rem;
+  color: #000000;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.categorias-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.categoria-item {
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  padding: 12px 24px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(224, 72, 77, 0.1);
+  min-width: 180px;
+}
+
+.categoria-item a {
+  text-decoration: none;
+  color: #030101;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.categoria-item:hover {
+  background-color: #e0484d;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(224, 72, 77, 0.3);
+}
+
+.categoria-item:hover a {
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .categorias-lista {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .categoria-item {
+    min-width: auto;
+  }
+}

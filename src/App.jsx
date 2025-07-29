@@ -5,6 +5,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
+import CookieBanner from "./components/CookieBanner";
 
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
@@ -16,11 +17,10 @@ import AdminPosts from "./pages/AdminPosts";
 import AdminHome from "./pages/AdminHome";
 import AdminDashboard from "./pages/AdminDashboard";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-
-import CookieBanner from "./components/CookieBanner";
+import Categorias from "./pages/Categorias";
+import CategoriaPosts from "./pages/CategoriaPosts";
 
 import { auth } from "./services/firebase";
-
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -40,12 +40,13 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/categorias" element={<Categorias />} />
+            <Route path="/categorias/:slug" element={<CategoriaPosts />} />
             <Route path="/post/:id" element={<Post />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/login" element={<Login onLogin={setIsAuthenticated} />} />
             <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
-
             <Route
               path="/admin"
               element={
