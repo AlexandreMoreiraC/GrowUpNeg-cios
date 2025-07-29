@@ -21,7 +21,7 @@ function Categorias() {
 
   return (
     <div className="categorias-container">
-      <h2 className="categorias-titulo">Categorias</h2>
+      <h2 className="categorias-titulo"></h2>
       <p className="categorias-subtitulo">
         Explore ideias e estratégias divididas por temas para transformar seu negócio.
       </p>
