@@ -2,7 +2,7 @@
   max-width: 600px;
   margin: 60px auto;
   padding: 40px 30px;
-  background: #fafafa;
+  background: #f9fafc;
   border-radius: 10px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.08);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -36,6 +36,8 @@
   font-family: inherit;
   color: #444;
   resize: vertical;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .contato textarea {
@@ -44,14 +46,14 @@
 
 .contato input:focus,
 .contato textarea:focus {
-  border-color: #ff5a5f;
-  box-shadow: 0 0 6px rgba(255, 90, 95, 0.4);
+  border-color: #2a9d8f;
+  box-shadow: 0 0 6px rgba(42, 157, 143, 0.4);
   outline: none;
   background-color: #fff;
 }
 
 .contato button {
-  background-color: #ff5a5f;
+  background-color: #ff7f50;
   color: #fff;
   border: none;
   padding: 16px;
@@ -60,24 +62,17 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 6px 15px rgba(255, 90, 95, 0.4);
+  box-shadow: 0 6px 15px rgba(255, 127, 80, 0.4);
   font-family: inherit;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .contato button:hover,
 .contato button:focus {
-  background-color: #e0484d;
-  box-shadow: 0 8px 20px rgba(224, 72, 77, 0.6);
+  background-color: #e06436;
+  box-shadow: 0 8px 20px rgba(224, 100, 54, 0.6);
   outline: none;
-}
-.contato input,
-.contato textarea {
-  max-width: 500px;
-  margin: 0 auto;
-}
-.contato button {
-  max-width: 300px;
-  margin: 0 auto;
 }
 
 .form-status {
@@ -102,7 +97,6 @@
     transform: translateY(0);
   }
 }
-
 
 @media (max-width: 600px) {
   .contato {

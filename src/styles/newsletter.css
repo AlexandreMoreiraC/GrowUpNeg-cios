@@ -54,7 +54,6 @@
   font-weight: 500;
 }
 
-/* Responsivo */
 @media (min-width: 600px) {
   .newsletter-inputs {
     flex-direction: row;

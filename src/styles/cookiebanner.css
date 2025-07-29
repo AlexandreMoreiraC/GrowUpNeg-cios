@@ -3,8 +3,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #222;
-  color: #fff;
+  background-color: #1d3557;
+  color: #f9fafc;
   padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -21,12 +21,12 @@
 }
 
 .cookie-banner__link {
-  color: #ff5a5f;
+  color: #2a9d8f;
   text-decoration: underline;
 }
 
 .cookie-banner__button {
-  background-color: #ff5a5f;
+  background-color: #ff7f50;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -39,11 +39,10 @@
 
 .cookie-banner__button:hover,
 .cookie-banner__button:focus {
-  background-color: #e0484d;
+  background-color: #e06436;
   outline: none;
 }
 
-/* Responsivo */
 @media (max-width: 480px) {
   .cookie-banner {
     flex-direction: column;

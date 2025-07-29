@@ -71,7 +71,6 @@
   user-select: text !important;
 }
 
-/* Responsivo */
 @media (max-width: 600px) {
   .post-card-image {
     height: 140px !important;

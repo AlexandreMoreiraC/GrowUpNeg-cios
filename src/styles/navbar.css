@@ -1,11 +1,10 @@
 .navbar {
-  background-color: hsl(358, 99%, 61%);
+  background-color: #ff7f50;
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: white;
-  box-shadow: 0 6px 15px rgba(0, 119, 204, 0.25);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -20,6 +19,7 @@
   cursor: default;
   user-select: none;
   text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  color: rgb(255, 249, 249);
 }
 
 .navbar-logo-link {
@@ -36,7 +36,7 @@
 .navbar-logo-link:focus,
 .navbar-logo-link:active {
   text-decoration: none;
-  color: inherit;
+  color: #ffffff; 
   outline: none;
   box-shadow: none;
 }
@@ -51,7 +51,7 @@
 }
 
 .navbar ul li a {
-  color: #ffffff;
+  color: white;
   font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
@@ -80,6 +80,7 @@
 
 .navbar ul li a:hover {
   text-shadow: 0 0 5px white;
+  color: #ffffff; 
 }
 
 @media (max-width: 768px) {

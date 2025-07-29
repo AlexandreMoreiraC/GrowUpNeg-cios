@@ -18,11 +18,9 @@
 .post h1 {
   font-size: 2.75rem;
   margin-bottom: 1rem;
-  /* cor padrão do texto, sem azul */
   color: inherit;
   font-weight: 900;
   letter-spacing: -0.03em;
-  /* removi o text-shadow para manter clean */
   text-shadow: none;
 }
 

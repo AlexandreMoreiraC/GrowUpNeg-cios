@@ -1,9 +1,8 @@
-/* Corpo e estrutura base */
 html, body {
   height: 100%;
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: #f4f6f8;
+  background-color: #f9fafc;
   color: #222;
 }
 
@@ -17,28 +16,25 @@ html, body {
   flex: 1;
 }
 
-/* Footer estilizado */
 footer {
-  background-color: #111; /* tom mais escuro e moderno */
+  background-color: #1d3557;
   color: #ccc;
   text-align: center;
-  padding: 1.5rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.75rem 1rem; /* reduzido de 1.5rem para 0.75rem */
+  font-size: 0.85rem; /* menor tamanho */
   letter-spacing: 0.03em;
   box-shadow: 0 -3px 8px rgba(0,0,0,0.2);
   user-select: none;
   transition: background-color 0.3s ease;
 }
 
-/* Pequeno destaque ao passar o mouse */
 footer:hover {
-  background-color: #222;
+  background-color: #2a9d8f;
   color: #fff;
 }
 
-/* Links dentro do footer, se houver */
 footer a {
-  color: #ff5a5f;
+  color: #ff7f50;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
@@ -46,14 +42,13 @@ footer a {
 
 footer a:hover,
 footer a:focus {
-  color: #e0484d;
+  color: #e06436;
   text-decoration: underline;
 }
 
-/* Responsividade */
 @media (max-width: 600px) {
   footer {
-    font-size: 0.85rem;
-    padding: 1rem 0.5rem;
+    font-size: 0.75rem; /* ainda menor em mobile */
+    padding: 0.5rem 0.5rem;
   }
 }

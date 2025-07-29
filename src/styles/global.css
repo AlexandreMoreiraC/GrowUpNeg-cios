@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #ffd4d4 !important;
+  background-color: #f9fafc !important; /* Fundo: quase branco azulado */
   color: #222;
   font-size: 16px;
   line-height: 1.6;
@@ -11,14 +11,14 @@ body {
 
 a {
   text-decoration: none;
-  color: #0077cc;
+  color: #1d3557; /* Primária: títulos, links */
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 a:hover,
 a:focus {
-  color: #004c94;
+  color: #2a9d8f; /* Destaques: verde-água elegante */
   text-decoration: underline;
 }
 
@@ -45,8 +45,8 @@ ul {
 }
 
 #editor:focus {
-  border-color: #0077cc;
-  box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.1);
+  border-color: #2a9d8f; /* Destaque no foco com verde-água */
+  box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
 }
 
 /* Imagens dentro do editor */
@@ -64,6 +64,6 @@ img[contenteditable="false"] {
 }
 
 img[contenteditable="false"]:hover {
-  border-color: #0077cc;
-  background-color: #f0faff;
+  border-color: #ff7f50; /* Botões e destaques laranja suave no hover */
+  background-color: #fff5f0;
 }

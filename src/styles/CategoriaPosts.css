@@ -35,7 +35,7 @@
 }
 
 .post-card:focus {
-  outline: 3px solid #e63946;
+  outline: 3px solid #ff7f50;
   outline-offset: 4px;
 }
 
@@ -63,10 +63,8 @@
 
 .post-card p:nth-last-child(1) {
   margin-top: 1rem;
-  /* Esse é o resumo do post, mantemos texto normal e user-select */
 }
 
-/* Responsivo */
 @media (max-width: 600px) {
   .posts-list {
     padding: 0 10px;

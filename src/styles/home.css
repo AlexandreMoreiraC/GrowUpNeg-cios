@@ -6,6 +6,7 @@
   gap: 30px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #222;
+  background-color: #f9fafc; /* fundo quase branco azulado */
   border-radius: 14px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
@@ -18,7 +19,7 @@
   font-size: 2.4rem;
   font-weight: 700;
   margin-bottom: 1.25rem;
-  color: #1d3557;
+  color: #1d3557; /* primária */
   letter-spacing: 0.02em;
 }
 
@@ -49,11 +50,11 @@
 
 .ad-space {
   background: #e7f3f1;
-  border: 2.5px dashed #2a9d8f;
+  border: 2.5px dashed #2a9d8f; /* destaque */
   border-radius: 16px;
   padding: 20px;
   text-align: center;
-  color: #2a9d8f;
+  color: #2a9d8f; /* destaque */
   font-weight: 700;
   font-size: 1.1rem;
   min-height: 200px;
@@ -74,7 +75,7 @@
   margin-bottom: 1rem;
   color: #9d2a2a;
   letter-spacing: 0.01em;
-  border-bottom: 2px solid #2a9d8f;
+  border-bottom: 2px solid #2a9d8f; /* destaque */
   padding-bottom: 6px;
 }
 
@@ -89,7 +90,7 @@
 }
 
 .recent-posts a {
-  color: #000000;
+  color: #1d3557; /* primária */
   text-decoration: none;
   font-weight: 600;
   font-size: 1.05rem;
@@ -101,12 +102,11 @@
 
 .recent-posts a:hover,
 .recent-posts a:focus {
-  color: #181d1c;
+  color: #2a9d8f; /* destaque */
   outline: none;
   font-size: 1.1rem;
   transition: font-size 0.3s ease;
 }
-
 
 @media (max-width: 900px) {
   .home-container {
@@ -134,11 +134,12 @@
     font-size: 1.25rem;
   }
 }
+
 .send-idea-button {
- display: inline-block;
+  display: inline-block;
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
-  background-color: orange;
+  background-color: #ff7f50; /* botões ação laranja */
   color: white;
   border: 2px solid white;
   border-radius: 4px;
@@ -149,17 +150,18 @@
 }
 
 .send-idea-button:hover {
- background-color: rgb(255, 106, 0);
+  background-color: rgb(230, 100, 60);
   color: #ffffff;
   text-shadow: none;
   outline: none;
   text-decoration: none;
 }
+
 .contact-button {
-display: inline-block;
+  display: inline-block;
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
-  background-color: #ff5a5f;
+  background-color: #ff7f50; /* botões ação laranja */
   color: white;
   border: 2px solid white;
   border-radius: 4px;
@@ -170,7 +172,7 @@ display: inline-block;
 }
 
 .contact-button:hover {
- background-color: #fe3f46;
+  background-color: #e06436;
   color: #ffffff;
   text-shadow: none;
   outline: none;
