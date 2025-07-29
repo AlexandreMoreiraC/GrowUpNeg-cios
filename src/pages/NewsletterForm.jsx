@@ -34,8 +34,8 @@ function NewsletterForm() {
 
   return (
     <form className="newsletter-form" onSubmit={handleSubmit}>
-      <h3>Newsletter</h3>
-      <p>Receba novidades, dicas e conteúdos exclusivos diretamente no seu email.</p>
+      <h3></h3>
+      <p>Fique por dentro! Receba em seu email novidades, dicas incríveis e conteúdos exclusivos feitos especialmente para você.</p>
       <div className="newsletter-inputs">
         {/* Importante para casar com o template */}
         <input

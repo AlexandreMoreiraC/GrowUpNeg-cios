@@ -16,53 +16,129 @@ function PrivacyPolicy() {
           content="Leia nossa política de privacidade e saiba como protegemos seus dados pessoais e garantimos sua segurança ao usar nosso site GrowUpNegócio."
         />
       </Helmet>
-      <section style={{ maxWidth: 800, margin: "2rem auto", padding: "0 1rem" }}>
-        <h2>Política de Privacidade</h2>
-        <p>
+      <section
+        style={{
+          maxWidth: 800,
+          margin: "2rem auto",
+          padding: "0 1rem",
+          fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+          color: "#1d3557",
+          lineHeight: 1.7,
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "28px",
+            textAlign: "center",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Política de Privacidade
+        </h2>
+        <p style={{ fontSize: "18px", marginBottom: "1.5rem" }}>
           Nós levamos sua privacidade a sério. Este documento explica como coletamos,
           usamos e protegemos suas informações pessoais quando você utiliza nosso site.
         </p>
 
-        <h3>Informações que coletamos</h3>
-        <p>
+        <h3
+          style={{
+            fontSize: "22px",
+            marginTop: "2rem",
+            marginBottom: "1rem",
+            borderBottom: "2px solid #1d3557",
+            paddingBottom: "0.3rem",
+          }}
+        >
+          Informações que coletamos
+        </h3>
+        <p style={{ fontSize: "18px", marginBottom: "1.5rem" }}>
           Podemos coletar dados como seu nome, email, e outras informações que você
           fornece ao usar nossos formulários de contato e interação.
         </p>
 
-        <h3>Uso das informações</h3>
-        <p>
+        <h3
+          style={{
+            fontSize: "22px",
+            marginTop: "2rem",
+            marginBottom: "1rem",
+            borderBottom: "2px solid #1d3557",
+            paddingBottom: "0.3rem",
+          }}
+        >
+          Uso das informações
+        </h3>
+        <p style={{ fontSize: "18px", marginBottom: "1.5rem" }}>
           As informações coletadas são usadas apenas para responder suas mensagens,
           melhorar o site e personalizar sua experiência. Não compartilhamos seus dados
           com terceiros sem sua autorização.
         </p>
 
-        <h3>Cookies</h3>
-        <p>
+        <h3
+          style={{
+            fontSize: "22px",
+            marginTop: "2rem",
+            marginBottom: "1rem",
+            borderBottom: "2px solid #1d3557",
+            paddingBottom: "0.3rem",
+          }}
+        >
+          Cookies
+        </h3>
+        <p style={{ fontSize: "18px", marginBottom: "1.5rem" }}>
           Usamos cookies para melhorar a navegação e garantir funcionalidades do site.
           Você pode optar por aceitar ou recusar o uso de cookies através do banner
           exibido ao entrar no site.
         </p>
 
-        <h3>Segurança</h3>
-        <p>
+        <h3
+          style={{
+            fontSize: "22px",
+            marginTop: "2rem",
+            marginBottom: "1rem",
+            borderBottom: "2px solid #1d3557",
+            paddingBottom: "0.3rem",
+          }}
+        >
+          Segurança
+        </h3>
+        <p style={{ fontSize: "18px", marginBottom: "1.5rem" }}>
           Tomamos medidas técnicas e organizacionais para proteger seus dados contra
           acessos não autorizados, perda ou alteração.
         </p>
 
-        <h3>Alterações nesta política</h3>
-        <p>
+        <h3
+          style={{
+            fontSize: "22px",
+            marginTop: "2rem",
+            marginBottom: "1rem",
+            borderBottom: "2px solid #1d3557",
+            paddingBottom: "0.3rem",
+          }}
+        >
+          Alterações nesta política
+        </h3>
+        <p style={{ fontSize: "18px", marginBottom: "1.5rem" }}>
           Podemos atualizar esta política periodicamente. Recomendamos revisá-la
           regularmente para se manter informado sobre como protegemos seus dados.
         </p>
 
-        <h3>Contato</h3>
-        <p>
+        <h3
+          style={{
+            fontSize: "22px",
+            marginTop: "2rem",
+            marginBottom: "1rem",
+            borderBottom: "2px solid #1d3557",
+            paddingBottom: "0.3rem",
+          }}
+        >
+          Contato
+        </h3>
+        <p style={{ fontSize: "18px" }}>
           Se tiver dúvidas ou quiser exercer seus direitos, entre em contato conosco via
           <a
             href="/contato"
-            style={{ color: "#0077cc", textDecoration: "underline" }}
+            style={{ color: "#0077cc", textDecoration: "underline", marginLeft: 4 }}
           >
-            {" "}
             formulário de contato
           </a>
           .

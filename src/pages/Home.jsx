@@ -137,7 +137,7 @@ function Home() {
                   </p>
                 )}
                 <Link to="/contato" className="contact-button">
-                  Ir para Contato
+                  Envie sua ideia agora
                 </Link>
               </section>
 
@@ -152,7 +152,7 @@ function Home() {
               </section>
 
               <section className="newsletter-home" aria-label="Assinar newsletter">
-                <h2>Receba novidades por email</h2>
+                <h2>Assine nossa newsletter e receba novidades por email</h2>
                 <Suspense fallback={<p>Carregando formulário...</p>}>
                   <NewsletterForm />
                 </Suspense>
