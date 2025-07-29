@@ -74,7 +74,8 @@ function Home() {
     fetchRecentPosts();
   }, []);
 
-  const defaultTitle = "Bem-vindo ao GrowUpNegócio - Dicas e Ideias para Empreendedores";
+  const defaultTitle =
+    "Bem-vindo ao GrowUpNegócio - Dicas e Ideias para Empreendedores";
   const defaultDescription =
     "No GrowUpNegócio você encontra dicas, ideias e inspirações para empreender com criatividade e sucesso.";
   const defaultWhyChooseUs =
@@ -84,6 +85,10 @@ function Home() {
 
   const pageTitle = homeContent.title?.trim() || defaultTitle;
   const pageDescription = homeContent.description?.trim() || defaultDescription;
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -185,6 +190,28 @@ function Home() {
             )}
           </section>
         </aside>
+
+        <button
+          onClick={scrollToTop}
+          style={{
+            position: "fixed",
+            bottom: "30px",
+            right: "30px",
+            padding: "10px 15px",
+            fontSize: "16px",
+            borderRadius: "5px",
+            border: "none",
+            backgroundColor: "rgba(255, 127, 80, 0.9)",
+            color: "#fff",
+            cursor: "pointer",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
+            zIndex: 10000,
+          }}
+          aria-label="Voltar ao topo"
+          title="Voltar ao topo"
+        >
+          ↑ Topo
+        </button>
       </section>
     </>
   );
