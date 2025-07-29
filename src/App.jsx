@@ -1,5 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { initGA, logPageView } from "./services/analytics";
 import { onAuthStateChanged } from "firebase/auth";
 
 import Navbar from "./components/Navbar";
@@ -22,6 +23,20 @@ const CategoriaPosts = lazy(() => import("./pages/CategoriaPosts"));
 
 import { auth } from "./services/firebase";
 
+function AnalyticsTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    initGA();
+  }, []);
+
+  useEffect(() => {
+    logPageView();
+  }, [location]);
+
+  return null;
+}
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -34,6 +49,7 @@ function App() {
 
   return (
     <Router>
+      <AnalyticsTracker />
       <div className="app-container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Navbar />
         <main className="main-content" role="main" style={{ flexGrow: 1 }}>
