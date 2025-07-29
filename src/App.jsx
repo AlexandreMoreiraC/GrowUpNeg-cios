@@ -4,7 +4,6 @@ import { initGA, logPageView } from "./services/analytics";
 import { onAuthStateChanged } from "firebase/auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
@@ -66,30 +65,9 @@ function App() {
               <Route path="/contato" element={<Contato />} />
               <Route path="/login" element={<Login onLogin={setIsAuthenticated} />} />
               <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
-              <Route
-                path="/admin"
-                element={
-                  <PrivateRoute isAuthenticated={isAuthenticated}>
-                    <AdminDashboard />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/admin/posts"
-                element={
-                  <PrivateRoute isAuthenticated={isAuthenticated}>
-                    <AdminPosts />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/admin/home"
-                element={
-                  <PrivateRoute isAuthenticated={isAuthenticated}>
-                    <AdminHome />
-                  </PrivateRoute>
-                }
-              />
+              <Route path="/admin" element={<PrivateRoute isAuthenticated={isAuthenticated}><AdminDashboard /></PrivateRoute>} />
+              <Route path="/admin/posts" element={<PrivateRoute isAuthenticated={isAuthenticated}><AdminPosts /></PrivateRoute>} />
+              <Route path="/admin/home" element={<PrivateRoute isAuthenticated={isAuthenticated}><AdminHome /></PrivateRoute>} />
             </Routes>
           </Suspense>
         </main>

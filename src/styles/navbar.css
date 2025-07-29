@@ -14,11 +14,26 @@
 }
 
 .navbar-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
   color: inherit;
   font-weight: bold;
   font-size: 1.5rem;
   user-select: none;
+}
+
+.navbar-logo-link img {
+  height: 48px;
+  width: 48px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.navbar-logo-link span {
+  white-space: nowrap;
 }
 
 .navbar-logo-link:hover,
@@ -88,7 +103,6 @@
   border-radius: 2px;
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;

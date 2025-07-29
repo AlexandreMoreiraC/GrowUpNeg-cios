@@ -11,8 +11,7 @@ function Navbar() {
   const seoData = {
     "/": {
       title: "GrowUpNegócio - Início",
-      description:
-        "Ideias, dicas e inspirações para empreendedores crescerem seus negócios com sucesso.",
+      description: "Ideias, dicas e inspirações para empreendedores crescerem seus negócios com sucesso.",
     },
     "/blog": {
       title: "GrowUpNegócio - Blog de Ideias",
@@ -20,13 +19,11 @@ function Navbar() {
     },
     "/sobre": {
       title: "GrowUpNegócio - Sobre Nós",
-      description:
-        "Conheça a missão e os valores do GrowUpNegócio para ajudar empreendedores.",
+      description: "Conheça a missão e os valores do GrowUpNegócio para ajudar empreendedores.",
     },
     "/contato": {
       title: "GrowUpNegócio - Contato",
-      description:
-        "Entre em contato conosco para tirar dúvidas ou enviar sua ideia de negócio.",
+      description: "Entre em contato conosco para tirar dúvidas ou enviar sua ideia de negócio.",
     },
   };
 
@@ -61,7 +58,11 @@ function Navbar() {
             aria-label="Ir para a página inicial GrowUp Negócios"
             onClick={closeMenu}
           >
-            GrowUp Negócios
+            <img
+              src="/logo-growup-nav.png"
+              alt="Logo GrowUp Negócios"
+            />
+            <span>GrowUp Negócios</span>
           </Link>
         </h1>
 
