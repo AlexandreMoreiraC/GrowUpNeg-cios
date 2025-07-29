@@ -74,13 +74,13 @@ function Home() {
     fetchRecentPosts();
   }, []);
 
-  const defaultTitle = "Bem-vindo ao GrowUpNegócio";
+  const defaultTitle = "Bem-vindo ao GrowUpNegócio - Dicas e Ideias para Empreendedores";
   const defaultDescription =
-    "Aqui você encontra ideias, dicas e inspirações para crescer seu negócio e empreender com sucesso.";
+    "No GrowUpNegócio você encontra dicas, ideias e inspirações para empreender com criatividade e sucesso.";
   const defaultWhyChooseUs =
-    "No GrowUpNegócio, nossa missão é capacitar empreendedores com ferramentas, conhecimento e suporte para transformar suas ideias em negócios de sucesso. Seja você um iniciante ou um veterano, aqui você encontrará conteúdos relevantes para todas as etapas da jornada empreendedora.";
+    "Aqui no GrowUpNegócio compartilhamos conteúdos práticos, insights e tendências para ajudar você a desenvolver seu negócio com mais segurança e inovação. Nosso objetivo é apoiar empreendedores em todas as etapas da jornada.";
   const defaultAdditionalInfo =
-    "Navegue pelo nosso site para descobrir artigos, cases, dicas práticas e tendências do mercado que vão te ajudar a tomar decisões estratégicas e crescer de forma sustentável.";
+    "Explore nosso blog para acessar artigos atualizados, análises e estratégias que vão inspirar você a transformar suas ideias em negócios reais e sustentáveis.";
 
   const pageTitle = homeContent.title?.trim() || defaultTitle;
   const pageDescription = homeContent.description?.trim() || defaultDescription;
@@ -113,7 +113,7 @@ function Home() {
               <p>{pageDescription}</p>
 
               <section className="highlights" aria-label="Envie sua ideia - Avaliação de viabilidade">
-                <h2>Envie sua ideia — Vamos avaliar juntos a viabilidade!</h2>
+                <h2>Tem uma ideia de negócio? Compartilhe conosco!</h2>
                 {homeContent.highlights && homeContent.highlights.length > 0 ? (
                   <div className="highlight-cards">
                     {homeContent.highlights.map((highlight, i) => (
@@ -133,11 +133,11 @@ function Home() {
                   </div>
                 ) : (
                   <p>
-                    Tem uma ideia de negócio? Envie para nós! Analisamos cuidadosamente cada proposta para ajudar você a entender sua viabilidade, identificar pontos fortes e desafios, e dar orientações para transformar sua ideia em um projeto de sucesso.
+                    No GrowUpNegócio você pode enviar suas ideias e receber sugestões e dicas para ajudar no desenvolvimento do seu projeto. Vamos juntos aprender e crescer como empreendedores!
                   </p>
                 )}
                 <Link to="/contato" className="contact-button">
-                  Envie sua ideia agora
+                  Compartilhe sua ideia
                 </Link>
               </section>
 

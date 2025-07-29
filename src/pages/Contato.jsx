@@ -48,7 +48,7 @@ function Contato() {
 
   return (
     <form className="contato" onSubmit={handleSubmit}>
-      <h3>Fale Conosco</h3>
+      <h3>Contate-nos</h3>
       <div className="form-group">
         <input
           type="text"

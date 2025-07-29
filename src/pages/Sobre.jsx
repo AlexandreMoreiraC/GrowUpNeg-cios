@@ -10,12 +10,12 @@ function Sobre() {
         <title>Sobre o GrowUpNegócio</title>
         <meta
           name="description"
-          content="Conheça o GrowUpNegócio, a plataforma que ajuda empreendedores a transformar ideias em negócios reais com conteúdo prático e inspirador."
+          content="Conheça o GrowUpNegócio, um blog dedicado a compartilhar dicas, ideias e inspirações para quem deseja empreender com criatividade e sucesso."
         />
         <meta property="og:title" content="Sobre o GrowUpNegócio" />
         <meta
           property="og:description"
-          content="Conheça o GrowUpNegócio, a plataforma que ajuda empreendedores a transformar ideias em negócios reais com conteúdo prático e inspirador."
+          content="Conheça o GrowUpNegócio, um blog dedicado a compartilhar dicas, ideias e inspirações para quem deseja empreender com criatividade e sucesso."
         />
       </Helmet>
       <section className="sobre">
@@ -33,24 +33,15 @@ function Sobre() {
             fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
           }}
         >
-          O GrowUpNegócio foi criado com o propósito de apoiar e impulsionar empreendedores de todos os níveis a
-          transformarem suas ideias em negócios concretos, rentáveis e sustentáveis. Sabemos que o caminho do empreendedorismo
-          é repleto de desafios, dúvidas e decisões importantes, por isso, nosso objetivo é oferecer um conteúdo completo, prático
-          e atualizado, que sirva como um verdadeiro guia para quem deseja crescer no mundo dos negócios.
+          O GrowUpNegócio é um blog criado para compartilhar dicas, ideias e inspirações para pessoas que desejam empreender de forma criativa e eficiente. Aqui você encontra conteúdos práticos e atualizados que ajudam a transformar suas ideias em projetos reais e viáveis.
           <br /><br />
-          Aqui, você encontrará não apenas dicas valiosas e estratégias testadas, mas também histórias inspiradoras de quem já trilhou essa
-          jornada, além de ferramentas e recursos essenciais para facilitar a gestão do seu empreendimento. Queremos estar ao seu lado em cada
-          etapa — desde a concepção da ideia, passando pelo planejamento, execução, até o desenvolvimento e expansão do seu negócio.
+          Nosso foco é apoiar empreendedores em diferentes estágios, oferecendo informações que auxiliam na tomada de decisões, superação de desafios e no desenvolvimento sustentável dos negócios. Além disso, trazemos histórias inspiradoras, análises de mercado e ferramentas úteis para sua jornada.
           <br /><br />
-          Acreditamos que o sucesso vem da combinação entre conhecimento, atitude e persistência, e por isso, buscamos trazer informações
-          que motivem, orientem e capacitem você a tomar as melhores decisões, superar obstáculos e inovar constantemente. No GrowUpNegócio,
-          você não está sozinho: fazemos parte de uma comunidade que acredita no poder do empreendedorismo para transformar vidas e gerar impacto
-          positivo na sociedade.
+          Acreditamos que o empreendedorismo é um caminho de aprendizado contínuo, e queremos ser seu parceiro nessa caminhada, fomentando uma comunidade que valoriza a inovação, a persistência e o crescimento coletivo.
           <br /><br />
-          Venha crescer com a gente, se conectar com outros empreendedores e construir um futuro de sucesso para o seu negócio!
+          Junte-se a nós para crescer, aprender e transformar suas ideias em negócios de sucesso!
         </p>
 
-        {/* Missão */}
         <h2
           style={{
             color: "#1d3557",
@@ -74,10 +65,9 @@ function Sobre() {
             fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
           }}
         >
-          Nossa missão é capacitar empreendedores de todos os níveis com conhecimento prático, ferramentas eficazes e inspiração constante para transformar suas ideias em negócios rentáveis e sustentáveis, contribuindo para o desenvolvimento econômico e social.
+          Nossa missão é fornecer conteúdo acessível, relevante e inspirador para ajudar pessoas a desenvolverem suas habilidades empreendedoras e transformarem suas ideias em negócios concretos e sustentáveis.
         </p>
 
-        {/* Visão */}
         <h2
           style={{
             color: "#1d3557",
@@ -101,7 +91,7 @@ function Sobre() {
             fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
           }}
         >
-          Ser reconhecido como a principal plataforma de apoio e inspiração para empreendedores no Brasil, fomentando uma comunidade forte, inovadora e comprometida com o crescimento sustentável e a transformação positiva da sociedade.
+          Ser reconhecido como um blog de referência para empreendedores brasileiros, fomentando uma comunidade engajada que busca inovação, conhecimento e crescimento sustentável no mundo dos negócios.
         </p>
       </section>
     </>
