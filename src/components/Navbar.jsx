@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import "../styles/navbar.css";
@@ -6,6 +6,7 @@ import "../styles/global.css";
 
 function Navbar() {
   const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
   const seoData = {
     "/": {
@@ -35,6 +36,14 @@ function Navbar() {
       description: "Ajuda e inspiração para empreendedores de sucesso.",
     };
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       <Helmet>
@@ -46,27 +55,44 @@ function Navbar() {
 
       <nav className="navbar">
         <h1>
-          <Link to="/" className="navbar-logo-link" aria-label="Ir para a página inicial GrowUp Negócios">
+          <Link
+            to="/"
+            className="navbar-logo-link"
+            aria-label="Ir para a página inicial GrowUp Negócios"
+            onClick={closeMenu}
+          >
             GrowUp Negócios
           </Link>
         </h1>
-        <ul>
-  <li>
-    <Link to="/">Início</Link>
-  </li>
-  <li>
-    <Link to="/blog">Blog</Link>
-  </li>
-  <li>
-    <Link to="/Categorias">Categorias</Link>
-  </li>
-  <li>
-    <Link to="/sobre">Sobre</Link>
-  </li>
-  <li>
-    <Link to="/contato">Contato</Link>
-  </li>
-</ul>
+
+        <button
+          className="hamburger"
+          aria-label="Menu"
+          aria-expanded={isOpen}
+          onClick={toggleMenu}
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+
+        <ul className={`nav-links ${isOpen ? "open" : ""}`}>
+          <li>
+            <Link to="/" onClick={closeMenu}>Início</Link>
+          </li>
+          <li>
+            <Link to="/blog" onClick={closeMenu}>Blog</Link>
+          </li>
+          <li>
+            <Link to="/categorias" onClick={closeMenu}>Categorias</Link>
+          </li>
+          <li>
+            <Link to="/sobre" onClick={closeMenu}>Sobre</Link>
+          </li>
+          <li>
+            <Link to="/contato" onClick={closeMenu}>Contato</Link>
+          </li>
+        </ul>
       </nav>
     </>
   );

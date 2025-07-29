@@ -1,5 +1,5 @@
 .navbar {
-  background-color: rgba(255, 127, 80, 0.95); /* laranja com leve transparência */
+  background-color: rgba(255, 127, 80, 0.95);
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -8,28 +8,9 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* sombra suave */
-  backdrop-filter: saturate(180%) blur(5px); /* efeito blur leve no fundo */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  backdrop-filter: saturate(180%) blur(5px);
   -webkit-backdrop-filter: saturate(180%) blur(5px);
-}
-
-.navbar:hover {
-  background-color: rgba(255, 127, 80, 1);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-}
-
-/* Resto igual, mas vou repetir para facilitar: */
-
-.navbar h1 {
-  font-size: 2.2rem;
-  margin: 0;
-  font-weight: 700;
-  letter-spacing: -0.6px;
-  cursor: default;
-  user-select: none;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  color: rgb(255, 249, 249);
 }
 
 .navbar-logo-link {
@@ -37,21 +18,17 @@
   color: inherit;
   font-weight: bold;
   font-size: 1.5rem;
-  cursor: pointer;
-  outline: none;
   user-select: none;
 }
 
 .navbar-logo-link:hover,
 .navbar-logo-link:focus,
 .navbar-logo-link:active {
-  text-decoration: none;
-  color: #ffffff; 
+  color: #ffffff;
   outline: none;
-  box-shadow: none;
 }
 
-.navbar ul {
+.nav-links {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -60,7 +37,7 @@
   list-style: none;
 }
 
-.navbar ul li a {
+.nav-links li a {
   color: white;
   font-weight: 600;
   font-size: 1rem;
@@ -70,7 +47,7 @@
   transition: color 0.3s ease;
 }
 
-.navbar ul li a::after {
+.nav-links li a::after {
   content: "";
   display: block;
   height: 3px;
@@ -83,37 +60,56 @@
   border-radius: 2px;
 }
 
-.navbar ul li a:hover::after,
-.navbar ul li a:focus::after {
+.nav-links li a:hover::after,
+.nav-links li a:focus::after {
   width: 100%;
 }
 
-.navbar ul li a:hover {
+.nav-links li a:hover {
   text-shadow: 0 0 5px white;
-  color: #ffffff; 
+  color: #ffffff;
 }
 
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* Responsivo */
 @media (max-width: 768px) {
-  .navbar {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 127, 80, 0.95);
     flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem 1.5rem;
+    align-items: center;
+    display: none;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
   }
 
-  .navbar h1 {
-    font-size: 1.8rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .navbar ul {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    width: 100%;
-    margin-top: 0.5rem;
-  }
-
-  .navbar ul li a {
-    font-size: 1.2rem;
+  .nav-links.open {
+    display: flex;
   }
 }
+
