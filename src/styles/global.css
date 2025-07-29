@@ -1,12 +1,20 @@
 /* Reset e base */
+html, body, #root {
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 body {
-  margin: 0;
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f9fafc !important; /* Fundo: quase branco azulado */
   color: #222;
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -26,6 +34,22 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+/* Container principal da aplicação - deve ter flex para empurrar footer para baixo */
+#root, .app-container {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh !important;
+  margin: 0 !important;
+}
+
+/* Conteúdo principal que cresce para preencher espaço */
+.main-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Editor de texto */
@@ -66,4 +90,52 @@ img[contenteditable="false"] {
 img[contenteditable="false"]:hover {
   border-color: #ff7f50; /* Botões e destaques laranja suave no hover */
   background-color: #fff5f0;
+}
+
+/* Footer fixo no final */
+footer {
+  background-color: #1d3557 !important;
+  color: #ccc !important;
+  text-align: center !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.02em !important;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.15) !important;
+  user-select: none !important;
+  transition: background-color 0.3s ease !important;
+  line-height: 1.3 !important;
+  font-weight: 400 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex-wrap: wrap !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+}
+
+/* Hover no footer */
+footer:hover {
+  background-color: #2a9d8f !important;
+  color: #fff !important;
+}
+
+footer a {
+  color: #ff7f50 !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  transition: color 0.3s ease !important;
+}
+
+footer a:hover,
+footer a:focus {
+  color: #e06436 !important;
+  text-decoration: underline !important;
+}
+
+@media (max-width: 600px) {
+  footer {
+    font-size: 0.7rem !important;
+    padding: 0.3rem 0.8rem !important;
+  }
 }

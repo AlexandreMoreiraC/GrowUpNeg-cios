@@ -2,6 +2,8 @@ import React, { useState, useEffect, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { initGA, logPageView } from "./services/analytics";
 import { onAuthStateChanged } from "firebase/auth";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -93,6 +95,7 @@ function App() {
         </main>
         <Footer />
         <CookieBanner />
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop />
       </div>
     </Router>
   );

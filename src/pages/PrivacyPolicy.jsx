@@ -137,9 +137,9 @@ function PrivacyPolicy() {
           Se tiver dúvidas ou quiser exercer seus direitos, entre em contato conosco via
           <a
             href="/contato"
-            style={{ color: "#0077cc", textDecoration: "underline", marginLeft: 4 }}
+            style={{ color: "#0077cc", marginLeft: 4 }}
           >
-            formulário de contato
+            Clicando aqui
           </a>
           .
         </p>

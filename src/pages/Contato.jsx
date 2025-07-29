@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import "../styles/contato.css";
+import { toast } from "react-toastify";
 
 function Contato() {
   const [formData, setFormData] = useState({
@@ -8,8 +9,6 @@ function Contato() {
     user_email: "",
     user_message: "",
   });
-
-  const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,23 +25,20 @@ function Contato() {
       .send(
         "service_4rkvyvs",
         "template_3qahcxf",
-
         formData,
         "PgxHQsJgnsH0IoVii"
       )
       .then(() => {
-        setStatus("Mensagem enviada com sucesso!");
+        toast.success("Mensagem enviada com sucesso!");
         setFormData({
           user_name: "",
           user_email: "",
           user_message: "",
         });
-        setTimeout(() => setStatus(null), 5000);
       })
       .catch((err) => {
+        toast.error("Erro ao enviar mensagem. Tente novamente.");
         console.error("Erro ao enviar:", err);
-        setStatus("Erro ao enviar mensagem. Tente novamente.");
-        setTimeout(() => setStatus(null), 5000);
       });
   };
 
@@ -80,7 +76,6 @@ function Contato() {
         />
       </div>
       <button type="submit">Enviar</button>
-      {status && <p className="form-status">{status}</p>}
     </form>
   );
 }

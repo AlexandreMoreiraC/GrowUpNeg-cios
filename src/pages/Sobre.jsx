@@ -20,7 +20,7 @@ function Sobre() {
       </Helmet>
       <section className="sobre">
         <h1 style={{ color: "#1d3557", fontSize: "30px", textAlign: "center" }}>
-          Sobre o GrowUpNegócio
+          Sobre o GrowUp Negócios
         </h1>
         <p
           style={{
@@ -33,7 +33,7 @@ function Sobre() {
             fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
           }}
         >
-          O GrowUpNegócio é um blog criado para compartilhar dicas, ideias e inspirações para pessoas que desejam empreender de forma criativa e eficiente. Aqui você encontra conteúdos práticos e atualizados que ajudam a transformar suas ideias em projetos reais e viáveis.
+          O GrowUp Negócios é um blog criado para compartilhar dicas, ideias e inspirações para pessoas que desejam empreender de forma criativa e eficiente. Aqui você encontra conteúdos práticos e atualizados que ajudam a transformar suas ideias em projetos reais e viáveis.
           <br /><br />
           Nosso foco é apoiar empreendedores em diferentes estágios, oferecendo informações que auxiliam na tomada de decisões, superação de desafios e no desenvolvimento sustentável dos negócios. Além disso, trazemos histórias inspiradoras, análises de mercado e ferramentas úteis para sua jornada.
           <br /><br />

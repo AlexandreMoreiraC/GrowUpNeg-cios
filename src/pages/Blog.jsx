@@ -108,7 +108,7 @@ export default function Blog() {
               to={`/post/${post.id}`}
               style={{ color: "#1d3557", textDecoration: "none" }}
             >
-              {post.titulo} <small>({post.category} / {post.subcategory})</small>
+              {post.titulo} <small>({post.category})</small>
             </Link>
           </li>
         ))}

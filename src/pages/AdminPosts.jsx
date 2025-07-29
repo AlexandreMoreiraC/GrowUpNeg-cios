@@ -12,6 +12,8 @@ import {
 } from "firebase/firestore";
 import { db } from "../services/firebase";
 import "../styles/adminposts.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const categorias = [
   "Marketing Digital",
@@ -23,7 +25,7 @@ const categorias = [
   "Sustentabilidade",
   "Carreira e Desenvolvimento",
   "Ideias de Negócio",
-  "Empreendedorismo para Iniciantes",
+  "Entrepreneurismo para Iniciantes",
   "Ferramentas e Plataformas",
   "Histórias de Sucesso",
   "Marketing e Vendas",
@@ -80,7 +82,7 @@ export default function AdminPosts() {
   const criarPost = async () => {
     const conteudo = editorRef.current.innerHTML.trim();
     if (!titulo.trim() || !autor.trim() || !conteudo || conteudo === "<br>") {
-      alert("Preencha todos os campos antes de publicar.");
+      toast.warn("Preencha todos os campos antes de publicar.");
       return;
     }
     try {
@@ -94,7 +96,7 @@ export default function AdminPosts() {
           category: categoria,
           updatedAt: serverTimestamp(),
         });
-        alert("Crônica atualizada com sucesso!");
+        toast.success("Crônica atualizada com sucesso!");
       } else {
         await addDoc(collection(db, "posts"), {
           titulo,
@@ -104,7 +106,7 @@ export default function AdminPosts() {
           category: categoria,
           createdAt: serverTimestamp(),
         });
-        alert("Crônica publicada com sucesso!");
+        toast.success("Crônica publicada com sucesso!");
       }
       setTitulo("");
       setAutor("");
@@ -115,7 +117,7 @@ export default function AdminPosts() {
       fetchPosts();
     } catch (error) {
       console.error("Erro ao salvar crônica:", error);
-      alert("Erro ao salvar, tente novamente.");
+      toast.error("Erro ao salvar, tente novamente.");
     }
   };
 
@@ -133,9 +135,10 @@ export default function AdminPosts() {
       try {
         await deleteDoc(doc(db, "posts", id));
         fetchPosts();
+        toast.info("Crônica excluída.");
       } catch (error) {
         console.error("Erro ao excluir crônica:", error);
-        alert("Erro ao excluir, tente novamente.");
+        toast.error("Erro ao excluir, tente novamente.");
       }
     }
   };
@@ -159,6 +162,7 @@ export default function AdminPosts() {
 
   return (
     <div className="admin-container">
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       <h1>Administração de Artigos</h1>
 
       <input
