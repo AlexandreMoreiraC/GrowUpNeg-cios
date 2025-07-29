@@ -1,0 +1,77 @@
+/* login.css */
+
+.login-container {
+  max-width: 400px;
+  margin: 5rem auto;
+  padding: 2.5rem 2rem;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1e1e1e;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.login-container input[type="email"]:focus,
+.login-container input[type="password"]:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.5);
+}
+
+.login-container button[type="submit"] {
+  padding: 0.85rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  background-color: #2563eb;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-container button[type="submit"]:hover,
+.login-container button[type="submit"]:focus {
+  background-color: #1e40af;
+  outline: none;
+}
+
+.login-container p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #dc2626; /* vermelho para erros */
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .login-container {
+    margin: 3rem 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .login-container input[type="email"],
+  .login-container input[type="password"] {
+    font-size: 1rem;
+  }
+
+  .login-container button[type="submit"] {
+    font-size: 1.1rem;
+  }
+}

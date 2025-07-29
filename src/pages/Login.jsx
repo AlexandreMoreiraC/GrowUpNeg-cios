@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { auth } from "../services/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import "../login.css";
+import "../styles/login.css";
 
 export default function Login({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ export default function Login({ onLogin }) {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       onLogin(true);
-      navigate("/admin");
+      navigate("/adminpost");  // redireciona direto para AdminPost
     } catch {
       setError("Email ou senha inválidos");
     }

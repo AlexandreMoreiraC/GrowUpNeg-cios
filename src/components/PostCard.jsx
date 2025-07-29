@@ -59,6 +59,11 @@ function PostCard({ post }) {
               {formatDate(post.createdAt)}
             </time>
           )}
+          {post.autor && (
+            <p className="post-card-autor" aria-label={`Autor: ${post.autor}`}>
+              Por {post.autor}
+            </p>
+          )}
         </header>
         <p className="post-card-summary">{getSummary(post.conteudo)}</p>
       </article>

@@ -51,7 +51,7 @@ function App() {
   return (
     <Router>
       <AnalyticsTracker />
-      <div className="app-container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <div className="app-container" style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
         <Navbar />
         <main className="main-content" role="main" style={{ flexGrow: 1 }}>
           <Suspense fallback={<p>Carregando...</p>}>
@@ -65,9 +65,41 @@ function App() {
               <Route path="/contato" element={<Contato />} />
               <Route path="/login" element={<Login onLogin={setIsAuthenticated} />} />
               <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
-              <Route path="/admin" element={<PrivateRoute isAuthenticated={isAuthenticated}><AdminDashboard /></PrivateRoute>} />
-              <Route path="/admin/posts" element={<PrivateRoute isAuthenticated={isAuthenticated}><AdminPosts /></PrivateRoute>} />
-              <Route path="/admin/home" element={<PrivateRoute isAuthenticated={isAuthenticated}><AdminHome /></PrivateRoute>} />
+
+              {/* Rotas privadas */}
+              <Route
+                path="/admin"
+                element={
+                  <PrivateRoute isAuthenticated={isAuthenticated}>
+                    <AdminDashboard />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/admin/posts"
+                element={
+                  <PrivateRoute isAuthenticated={isAuthenticated}>
+                    <AdminPosts />
+                  </PrivateRoute>
+                }
+              />
+              {/* Rota nova para adminpost que seu login usa */}
+              <Route
+                path="/adminpost"
+                element={
+                  <PrivateRoute isAuthenticated={isAuthenticated}>
+                    <AdminPosts />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/admin/home"
+                element={
+                  <PrivateRoute isAuthenticated={isAuthenticated}>
+                    <AdminHome />
+                  </PrivateRoute>
+                }
+              />
             </Routes>
           </Suspense>
         </main>
