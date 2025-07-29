@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
 import { db } from "../services/firebase";
-import PostCard from "../components/PostCard";
 import "../styles/CategoriaPosts.css";
-
 
 const categoriasSlugParaNome = {
   "marketing-digital": "Marketing Digital",
@@ -36,7 +34,6 @@ function CategoriaPosts() {
         setLoading(false);
         return;
       }
-
       try {
         const q = query(
           collection(db, "posts"),
@@ -57,11 +54,9 @@ function CategoriaPosts() {
           };
         });
         setPosts(postsData);
-      } catch (error) {
-        console.error("Erro ao buscar posts por categoria:", error);
+      } catch {
         setPosts([]);
       }
-
       setLoading(false);
     }
     fetchPosts();
@@ -73,10 +68,15 @@ function CategoriaPosts() {
   return (
     <div className="posts-list">
       <h2 style={{ textTransform: "capitalize", marginBottom: "20px" }}>
-       {categoriasSlugParaNome[slug]}
+        {categoriasSlugParaNome[slug]}
       </h2>
       {posts.map(post => (
-        <div key={post.id} className="post-card">
+        <Link
+          key={post.id}
+          to={`/post/${post.id}`}
+          className="post-card"
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
           <h3>{post.titulo}</h3>
           <p className="italic">{post.autor}</p>
           <p>Publicado em: {post.dataFormatada}</p>
@@ -87,7 +87,7 @@ function CategoriaPosts() {
                 : post.conteudo
             }}
           />
-        </div>
+        </Link>
       ))}
     </div>
   );

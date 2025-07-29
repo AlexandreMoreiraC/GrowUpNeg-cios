@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #ff7f50;
+  background-color: rgba(255, 127, 80, 0.95); /* laranja com leve transparência */
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -8,8 +8,18 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* sombra suave */
+  backdrop-filter: saturate(180%) blur(5px); /* efeito blur leve no fundo */
+  -webkit-backdrop-filter: saturate(180%) blur(5px);
 }
+
+.navbar:hover {
+  background-color: rgba(255, 127, 80, 1);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+/* Resto igual, mas vou repetir para facilitar: */
 
 .navbar h1 {
   font-size: 2.2rem;

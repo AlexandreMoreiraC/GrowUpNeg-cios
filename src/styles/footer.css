@@ -1,31 +1,20 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #f9fafc;
-  color: #222;
-}
-
-#root, .app-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.main-content {
-  flex: 1;
-}
-
 footer {
   background-color: #1d3557;
   color: #ccc;
   text-align: center;
-  padding: 0.75rem 1rem; /* reduzido de 1.5rem para 0.75rem */
-  font-size: 0.85rem; /* menor tamanho */
-  letter-spacing: 0.03em;
-  box-shadow: 0 -3px 8px rgba(0,0,0,0.2);
+  padding: 0.5rem 1rem;       /* menos espaço vertical */
+  font-size: 0.8rem;         /* fonte menor e leve */
+  letter-spacing: 0.02em;    /* espaçamento sutil */
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.15);
   user-select: none;
   transition: background-color 0.3s ease;
+  line-height: 1.3;          /* menos espaçamento vertical entre linhas */
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;               /* espaçamento entre texto e link */
+  flex-wrap: wrap;
 }
 
 footer:hover {
@@ -48,7 +37,7 @@ footer a:focus {
 
 @media (max-width: 600px) {
   footer {
-    font-size: 0.75rem; /* ainda menor em mobile */
-    padding: 0.5rem 0.5rem;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
   }
 }
