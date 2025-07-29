@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { db } from "../services/firebase";
 import {
   collection,
@@ -11,7 +11,7 @@ import {
 } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import NewsletterForm from "./NewsletterForm";
+const NewsletterForm = lazy(() => import("./NewsletterForm"));
 import "../styles/pages.css";
 import "../styles/home.css";
 import "../styles/global.css";
@@ -40,7 +40,7 @@ function Home() {
         if (docSnap.exists()) {
           setHomeContent(docSnap.data());
         }
-      } catch (error) {
+      } catch {
         setErrorHome("Erro ao carregar conteúdo da home.");
       } finally {
         setLoadingHome(false);
@@ -65,7 +65,7 @@ function Home() {
           ...doc.data(),
         }));
         setRecentPosts(posts);
-      } catch (err) {
+      } catch {
         setErrorPosts("Erro ao carregar artigos recentes.");
       } finally {
         setLoadingPosts(false);
@@ -123,6 +123,7 @@ function Home() {
                             src={highlight.imageUrl}
                             alt={highlight.title || "Imagem destaque"}
                             className="highlight-image"
+                            loading="lazy"
                           />
                         )}
                         <h3>{highlight.title}</h3>
@@ -139,7 +140,6 @@ function Home() {
                   Ir para Contato
                 </Link>
               </section>
-              
 
               <section className="why-choose-us" aria-label="Por que escolher o GrowUpNegócio">
                 <h2>Por que escolher o GrowUpNegócio?</h2>
@@ -153,7 +153,9 @@ function Home() {
 
               <section className="newsletter-home" aria-label="Assinar newsletter">
                 <h2>Receba novidades por email</h2>
-                <NewsletterForm />
+                <Suspense fallback={<p>Carregando formulário...</p>}>
+                  <NewsletterForm />
+                </Suspense>
               </section>
             </>
           )}

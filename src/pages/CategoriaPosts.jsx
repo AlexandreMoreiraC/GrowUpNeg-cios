@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useParams, Link } from "react-router-dom";
 import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
 import { db } from "../services/firebase";
@@ -19,6 +19,8 @@ const categoriasSlugParaNome = {
   "historias-de-sucesso": "Histórias de Sucesso",
   "marketing-e-vendas": "Marketing e Vendas",
 };
+
+const NewsletterForm = lazy(() => import("./NewsletterForm"));
 
 function CategoriaPosts() {
   const { slug } = useParams();
@@ -66,30 +68,35 @@ function CategoriaPosts() {
   if (posts.length === 0) return <p>Não há posts nesta categoria.</p>;
 
   return (
-    <div className="posts-list">
-      <h2 style={{ textTransform: "capitalize", marginBottom: "20px" }}>
-        {categoriasSlugParaNome[slug]}
-      </h2>
-      {posts.map(post => (
-        <Link
-          key={post.id}
-          to={`/post/${post.id}`}
-          className="post-card"
-          style={{ textDecoration: 'none', color: 'inherit' }}
-        >
-          <h3>{post.titulo}</h3>
-          <p className="italic">{post.autor}</p>
-          <p>Publicado em: {post.dataFormatada}</p>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: post.conteudo.length > 150
-                ? post.conteudo.slice(0, 150) + "..."
-                : post.conteudo
-            }}
-          />
-        </Link>
-      ))}
-    </div>
+    <>
+      <div className="posts-list">
+        <h2 style={{ textTransform: "capitalize", marginBottom: "20px" }}>
+          {categoriasSlugParaNome[slug]}
+        </h2>
+        {posts.map(post => (
+          <Link
+            key={post.id}
+            to={`/post/${post.id}`}
+            className="post-card"
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <h3>{post.titulo}</h3>
+            <p className="italic">{post.autor}</p>
+            <p>Publicado em: {post.dataFormatada}</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: post.conteudo.length > 150
+                  ? post.conteudo.slice(0, 150) + "..."
+                  : post.conteudo
+              }}
+            />
+          </Link>
+        ))}
+      </div>
+      <Suspense fallback={<p>Carregando formulário...</p>}>
+        <NewsletterForm />
+      </Suspense>
+    </>
   );
 }
 

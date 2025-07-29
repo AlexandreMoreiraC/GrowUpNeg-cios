@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../services/firebase";
 import PostCard from "../components/PostCard";
 import { Helmet } from "react-helmet";
-import NewsletterForm from "./NewsletterForm";
 import { Link } from "react-router-dom";
 import "../styles/pages.css";
 import "../styles/global.css";
 import "../styles/Blog.css";
+
+const NewsletterForm = lazy(() => import("./NewsletterForm"));
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
@@ -114,7 +115,9 @@ export default function Blog() {
       </ul>
 
       <div style={{ marginTop: "40px" }}>
-        <NewsletterForm />
+        <Suspense fallback={<p>Carregando formulário...</p>}>
+          <NewsletterForm />
+        </Suspense>
       </div>
     </section>
   );

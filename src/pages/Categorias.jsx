@@ -1,8 +1,8 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import "../styles/categorias.css";
 
-function Categorias() {
+const Categorias = () => {
   const categorias = [
     { name: "Marketing Digital", slug: "marketing-digital" },
     { name: "Negócios Locais", slug: "negocios-locais" },
@@ -34,6 +34,6 @@ function Categorias() {
       </ul>
     </div>
   );
-}
+};
 
 export default Categorias;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -7,18 +7,18 @@ import Footer from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
 import CookieBanner from "./components/CookieBanner";
 
-import Home from "./pages/Home";
-import Blog from "./pages/Blog";
-import Post from "./pages/Post";
-import Sobre from "./pages/Sobre";
-import Contato from "./pages/Contato";
-import Login from "./pages/Login";
-import AdminPosts from "./pages/AdminPosts";
-import AdminHome from "./pages/AdminHome";
-import AdminDashboard from "./pages/AdminDashboard";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import Categorias from "./pages/Categorias";
-import CategoriaPosts from "./pages/CategoriaPosts";
+const Home = lazy(() => import("./pages/Home"));
+const Blog = lazy(() => import("./pages/Blog"));
+const Post = lazy(() => import("./pages/Post"));
+const Sobre = lazy(() => import("./pages/Sobre"));
+const Contato = lazy(() => import("./pages/Contato"));
+const Login = lazy(() => import("./pages/Login"));
+const AdminPosts = lazy(() => import("./pages/AdminPosts"));
+const AdminHome = lazy(() => import("./pages/AdminHome"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const Categorias = lazy(() => import("./pages/Categorias"));
+const CategoriaPosts = lazy(() => import("./pages/CategoriaPosts"));
 
 import { auth } from "./services/firebase";
 
@@ -34,44 +34,46 @@ function App() {
 
   return (
     <Router>
-      <div className="app-container">
+      <div className="app-container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Navbar />
-        <main className="main-content" role="main">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/categorias" element={<Categorias />} />
-            <Route path="/categorias/:slug" element={<CategoriaPosts />} />
-            <Route path="/post/:id" element={<Post />} />
-            <Route path="/sobre" element={<Sobre />} />
-            <Route path="/contato" element={<Contato />} />
-            <Route path="/login" element={<Login onLogin={setIsAuthenticated} />} />
-            <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
-            <Route
-              path="/admin"
-              element={
-                <PrivateRoute isAuthenticated={isAuthenticated}>
-                  <AdminDashboard />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/admin/posts"
-              element={
-                <PrivateRoute isAuthenticated={isAuthenticated}>
-                  <AdminPosts />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/admin/home"
-              element={
-                <PrivateRoute isAuthenticated={isAuthenticated}>
-                  <AdminHome />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
+        <main className="main-content" role="main" style={{ flexGrow: 1 }}>
+          <Suspense fallback={<p>Carregando...</p>}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/categorias" element={<Categorias />} />
+              <Route path="/categorias/:slug" element={<CategoriaPosts />} />
+              <Route path="/post/:id" element={<Post />} />
+              <Route path="/sobre" element={<Sobre />} />
+              <Route path="/contato" element={<Contato />} />
+              <Route path="/login" element={<Login onLogin={setIsAuthenticated} />} />
+              <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+              <Route
+                path="/admin"
+                element={
+                  <PrivateRoute isAuthenticated={isAuthenticated}>
+                    <AdminDashboard />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/admin/posts"
+                element={
+                  <PrivateRoute isAuthenticated={isAuthenticated}>
+                    <AdminPosts />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/admin/home"
+                element={
+                  <PrivateRoute isAuthenticated={isAuthenticated}>
+                    <AdminHome />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+          </Suspense>
         </main>
         <Footer />
         <CookieBanner />
