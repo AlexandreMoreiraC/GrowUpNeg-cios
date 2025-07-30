@@ -59,7 +59,7 @@ function Navbar() {
             onClick={closeMenu}
           >
             <img
-              src="/logo-growup-nav.png"
+              src="/logo-growup-nav.webp"
               alt="Logo GrowUp Negócios"
             />
             <span>GrowUp Negócios</span>

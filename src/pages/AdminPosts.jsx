@@ -105,10 +105,12 @@ export default function AdminPosts() {
     editorRef.current.focus();
   };
 
-  const criarPost = async () => {
+  // Função unificada para criar ou atualizar post
+  // published = true (publicar) ou false (rascunho)
+  const salvarPost = async (published) => {
     const conteudo = editorRef.current.innerHTML.trim();
     if (!titulo.trim() || !autor.trim() || !conteudo || conteudo === "<br>") {
-      toast.warn("Preencha todos os campos antes de publicar.");
+      toast.warn("Preencha todos os campos antes de salvar.");
       return;
     }
     try {
@@ -120,9 +122,14 @@ export default function AdminPosts() {
           conteudo,
           dataPublicacao,
           category: categoria,
+          published, // campo novo
           updatedAt: serverTimestamp(),
         });
-        toast.success("Crônica atualizada com sucesso!");
+        toast.success(
+          published
+            ? "Artigo publicada com sucesso!"
+            : "Rascunho salvo com sucesso!"
+        );
       } else {
         await addDoc(collection(db, "posts"), {
           titulo,
@@ -130,21 +137,30 @@ export default function AdminPosts() {
           conteudo,
           dataPublicacao,
           category: categoria,
+          published, // campo novo
           createdAt: serverTimestamp(),
         });
-        toast.success("Crônica publicada com sucesso!");
+        toast.success(
+          published
+            ? "Artigo publicada com sucesso!"
+            : "Rascunho salvo com sucesso!"
+        );
       }
-      setTitulo("");
-      setAutor("");
-      setDataPublicacao("");
-      setCategoria(categorias[0]);
-      editorRef.current.innerHTML = "";
-      setEditingId(null);
+      limparCampos();
       fetchPosts();
     } catch (error) {
-      console.error("Erro ao salvar crônica:", error);
+      console.error("Erro ao salvar este Artigo:", error);
       toast.error("Erro ao salvar, tente novamente.");
     }
+  };
+
+  const limparCampos = () => {
+    setTitulo("");
+    setAutor("");
+    setDataPublicacao("");
+    setCategoria(categorias[0]);
+    editorRef.current.innerHTML = "";
+    setEditingId(null);
   };
 
   const getResumo = (html) => {
@@ -157,13 +173,13 @@ export default function AdminPosts() {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm("Tem certeza que deseja excluir esta crônica?")) {
+    if (window.confirm("Tem certeza que deseja excluir este Artigo?")) {
       try {
         await deleteDoc(doc(db, "posts", id));
         fetchPosts();
-        toast.info("Crônica excluída.");
+        toast.info("Artigo excluído.");
       } catch (error) {
-        console.error("Erro ao excluir crônica:", error);
+        console.error("Erro ao excluir este Artigo:", error);
         toast.error("Erro ao excluir, tente novamente.");
       }
     }
@@ -322,11 +338,31 @@ export default function AdminPosts() {
         spellCheck={true}
       ></div>
 
-      <button onClick={criarPost} className="admin-submit-btn">
-        {editingId ? "Salvar alterações" : "Publicar"}
-      </button>
+      <div style={{ marginTop: "1rem", display: "flex", gap: "10px" }}>
+        <button
+          onClick={() => salvarPost(true)}
+          className="admin-submit-btn"
+          style={{ flex: 1 }}
+        >
+          {editingId ? "Atualizar e Publicar" : "Publicar"}
+        </button>
 
-      <h2>Artigos Publicados</h2>
+        <button
+          onClick={() => salvarPost(false)}
+          className="admin-submit-btn"
+          style={{
+            flex: 1,
+            backgroundColor: "#555",
+            color: "white",
+            border: "none",
+            borderRadius: "6px",
+          }}
+        >
+          {editingId ? "Salvar como Rascunho" : "Salvar como Rascunho"}
+        </button>
+      </div>
+
+      <h2>Artigos Cadastrados</h2>
 
       <input
         type="text"
@@ -336,12 +372,19 @@ export default function AdminPosts() {
         className="admin-search"
       />
 
-      {filteredPosts.length === 0 && <p>Nenhuma crônica encontrada.</p>}
+      {filteredPosts.length === 0 && <p>Nenhum Artigo encontrado.</p>}
 
       <div className="posts-list">
         {filteredPosts.map((post) => (
           <div key={post.id} className="post-card">
-            <h3>{post.titulo}</h3>
+            <h3>
+              {post.titulo}{" "}
+              {post.published === false ? (
+                <span style={{ color: "#ff6347" }}>(Rascunho)</span>
+              ) : (
+                <span style={{ color: "#2e8b57" }}>(Publicado)</span>
+              )}
+            </h3>
             <p className="italic">{post.autor}</p>
             <p className="post-date">
               Publicado em: {post.dataPublicacao || "Data indisponível"}
@@ -349,10 +392,16 @@ export default function AdminPosts() {
             <p>Categoria: {post.category || "—"}</p>
             <p>{getResumo(post.conteudo)}</p>
             <div className="post-card-footer">
-              <button onClick={() => handleEdit(post)} className="post-card-btn edit">
+              <button
+                onClick={() => handleEdit(post)}
+                className="post-card-btn edit"
+              >
                 Editar
               </button>
-              <button onClick={() => handleDelete(post.id)} className="post-card-btn delete">
+              <button
+                onClick={() => handleDelete(post.id)}
+                className="post-card-btn delete"
+              >
                 Excluir
               </button>
             </div>

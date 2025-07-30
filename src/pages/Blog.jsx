@@ -1,5 +1,5 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
 import { db } from "../services/firebase";
 import PostCard from "../components/PostCard";
 import { Helmet } from "react-helmet";
@@ -20,7 +20,11 @@ export default function Blog() {
       setLoading(true);
       try {
         const postsRef = collection(db, "posts");
-        const q = query(postsRef, orderBy("createdAt", "desc"));
+        const q = query(
+          postsRef,
+          where("published", "==", true),
+          orderBy("createdAt", "desc")
+        );
         const querySnapshot = await getDocs(q);
         const postsArray = querySnapshot.docs.map((doc) => {
           const data = doc.data();
@@ -100,7 +104,7 @@ export default function Blog() {
         </div>
       )}
 
-      <h3 style={{ marginTop: "3rem", color:"black"  }}>Posts Recentes</h3>
+      <h3 style={{ marginTop: "3rem", color: "black" }}>Posts Recentes</h3>
       <ul>
         {recentPosts.map((post) => (
           <li key={post.id} style={{ margin: "0.5rem 0" }}>
