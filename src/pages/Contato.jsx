@@ -6,9 +6,9 @@ import "../styles/contato.css";
 
 function Contato() {
   const [formData, setFormData] = useState({
-    user_name: "",
-    user_email: "",
-    user_message: "",
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -32,9 +32,9 @@ function Contato() {
       .then(() => {
         toast.success("Mensagem enviada com sucesso!");
         setFormData({
-          user_name: "",
-          user_email: "",
-          user_message: "",
+          name: "",
+          email: "",
+          message: "",
         });
       })
       .catch((err) => {
@@ -50,9 +50,9 @@ function Contato() {
         <div className="form-group">
           <input
             type="text"
-            name="user_name"
+            name="name"
             placeholder="Seu nome"
-            value={formData.user_name}
+            value={formData.name}
             onChange={handleChange}
             required
           />
@@ -60,19 +60,19 @@ function Contato() {
         <div className="form-group">
           <input
             type="email"
-            name="user_email"
+            name="email"
             placeholder="Seu email"
-            value={formData.user_email}
+            value={formData.email}
             onChange={handleChange}
             required
           />
         </div>
         <div className="form-group">
           <textarea
-            name="user_message"
+            name="message"
             placeholder="Sua mensagem"
             rows="5"
-            value={formData.user_message}
+            value={formData.message}
             onChange={handleChange}
             required
           />
@@ -80,7 +80,6 @@ function Contato() {
         <button type="submit">Enviar</button>
       </form>
 
-      {/* Container do Toastify */}
       <ToastContainer
         position="top-center"
         autoClose={5000}
