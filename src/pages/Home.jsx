@@ -29,6 +29,8 @@ function Home() {
   const [loadingHome, setLoadingHome] = useState(true);
   const [errorPosts, setErrorPosts] = useState(null);
   const [errorHome, setErrorHome] = useState(null);
+  const [showExitModal, setShowExitModal] = useState(false);
+  const [modalShownOnce, setModalShownOnce] = useState(false);
 
   useEffect(() => {
     async function fetchHomeData() {
@@ -74,6 +76,19 @@ function Home() {
     fetchRecentPosts();
   }, []);
 
+  useEffect(() => {
+    function handleMouseMove(e) {
+      if (e.clientY < 50 && !modalShownOnce) {
+        setShowExitModal(true);
+        setModalShownOnce(true);
+      }
+    }
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [modalShownOnce]);
+
   const defaultTitle =
     "Bem-vindo ao GrowUpNegócio - Dicas e Ideias para Empreendedores";
   const defaultDescription =
@@ -89,6 +104,10 @@ function Home() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  function closeModal() {
+    setShowExitModal(false);
+  }
 
   return (
     <>
@@ -147,7 +166,7 @@ function Home() {
               </section>
 
               <section className="why-choose-us" aria-label="Por que escolher o GrowUpNegócio">
-                <h2>Por que escolher o GrowUpNegócio?</h2>
+                <h2>O GrowUp Negócios</h2>
                 <p>{homeContent.whyChooseUs?.trim() ? homeContent.whyChooseUs : defaultWhyChooseUs}</p>
               </section>
 
@@ -212,6 +231,47 @@ function Home() {
         >
           ↑ Topo
         </button>
+
+        {showExitModal && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="exitModalTitle"
+            aria-describedby="exitModalDesc"
+            className="exit-modal-overlay"
+            onClick={closeModal}
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              backgroundColor: "rgba(0,0,0,0.5)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 11000,
+            }}
+          >
+            <div
+              className="exit-modal-content"
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                background: "#fff",
+                borderRadius: "10px",
+                padding: "20px",
+                maxWidth: "500px",
+                width: "90%",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                textAlign: "center",
+              }}
+            >
+              <Suspense fallback={<p>Carregando formulário...</p>}>
+                <NewsletterForm />
+              </Suspense>
+            </div>
+          </div>
+        )}
       </section>
     </>
   );

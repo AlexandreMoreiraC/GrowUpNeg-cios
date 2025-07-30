@@ -1,4 +1,4 @@
-import React, { useEffect, useState, lazy, Suspense } from "react";
+import React, { useEffect, useState, lazy, Suspense, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../services/firebase";
@@ -14,6 +14,8 @@ function Post() {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showNewsletter, setShowNewsletter] = useState(false);
+  const popupRef = useRef(null);
 
   useEffect(() => {
     async function fetchPost() {
@@ -31,13 +33,36 @@ function Post() {
       } catch (err) {
         setError("Erro ao carregar o post.");
         setPost(null);
-        console.error(err);
       } finally {
         setLoading(false);
       }
     }
     fetchPost();
   }, [id]);
+
+  useEffect(() => {
+    function handleExitIntent(e) {
+      if (e.clientY < 0 && !showNewsletter) {
+        setShowNewsletter(true);
+      }
+    }
+    document.addEventListener("mouseout", handleExitIntent);
+    return () => document.removeEventListener("mouseout", handleExitIntent);
+  }, [showNewsletter]);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (popupRef.current && !popupRef.current.contains(e.target)) {
+        setShowNewsletter(false);
+      }
+    }
+    if (showNewsletter) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showNewsletter]);
 
   if (loading) return <p>Carregando post...</p>;
   if (error) return <p className="error">{error}</p>;
@@ -75,9 +100,7 @@ function Post() {
           <p>
             Categoria:{" "}
             <Link
-              to={`/categoria/${post.category
-                .toLowerCase()
-                .replace(/ /g, "-")}`}
+              to={`/categoria/${post.category.toLowerCase().replace(/ /g, "-")}`}
             >
               {post.category}
             </Link>{" "}
@@ -101,9 +124,7 @@ function Post() {
           ← Voltar para Home
         </Link>
       </article>
-      <Suspense fallback={<p>Carregando formulário...</p>}>
-        <NewsletterForm />
-      </Suspense>
+
     </>
   );
 }

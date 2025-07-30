@@ -16,7 +16,7 @@ export default function Login({ onLogin }) {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       onLogin(true);
-      navigate("/adminpost");  // redireciona direto para AdminPost
+      navigate("/adminpost");
     } catch {
       setError("Email ou senha inválidos");
     }

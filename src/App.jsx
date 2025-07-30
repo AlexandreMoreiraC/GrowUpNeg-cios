@@ -16,8 +16,6 @@ const Sobre = lazy(() => import("./pages/Sobre"));
 const Contato = lazy(() => import("./pages/Contato"));
 const Login = lazy(() => import("./pages/Login"));
 const AdminPosts = lazy(() => import("./pages/AdminPosts"));
-const AdminHome = lazy(() => import("./pages/AdminHome"));
-const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Categorias = lazy(() => import("./pages/Categorias"));
 const CategoriaPosts = lazy(() => import("./pages/CategoriaPosts"));
@@ -51,7 +49,10 @@ function App() {
   return (
     <Router>
       <AnalyticsTracker />
-      <div className="app-container" style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <div
+        className="app-container"
+        style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+      >
         <Navbar />
         <main className="main-content" role="main" style={{ flexGrow: 1 }}>
           <Suspense fallback={<p>Carregando...</p>}>
@@ -68,14 +69,6 @@ function App() {
 
               {/* Rotas privadas */}
               <Route
-                path="/admin"
-                element={
-                  <PrivateRoute isAuthenticated={isAuthenticated}>
-                    <AdminDashboard />
-                  </PrivateRoute>
-                }
-              />
-              <Route
                 path="/admin/posts"
                 element={
                   <PrivateRoute isAuthenticated={isAuthenticated}>
@@ -83,7 +76,6 @@ function App() {
                   </PrivateRoute>
                 }
               />
-              {/* Rota nova para adminpost que seu login usa */}
               <Route
                 path="/adminpost"
                 element={
@@ -92,20 +84,17 @@ function App() {
                   </PrivateRoute>
                 }
               />
-              <Route
-                path="/admin/home"
-                element={
-                  <PrivateRoute isAuthenticated={isAuthenticated}>
-                    <AdminHome />
-                  </PrivateRoute>
-                }
-              />
             </Routes>
           </Suspense>
         </main>
         <Footer />
         <CookieBanner />
-        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+        />
       </div>
     </Router>
   );

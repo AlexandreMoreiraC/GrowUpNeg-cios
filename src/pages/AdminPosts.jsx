@@ -10,7 +10,8 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
-import { db } from "../services/firebase";
+import { db, auth } from "../services/firebase";
+import { signOut } from "firebase/auth";
 import "../styles/adminposts.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -41,6 +42,8 @@ export default function AdminPosts() {
   const [imageUrl, setImageUrl] = useState("");
   const [editingId, setEditingId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [linkText, setLinkText] = useState("");
+  const [linkUrl, setLinkUrl] = useState("");
 
   useEffect(() => {
     fetchPosts();
@@ -77,6 +80,29 @@ export default function AdminPosts() {
       setImageUrl("");
       editorRef.current.focus();
     }
+  };
+
+  const handleInsertLink = () => {
+    if (!linkText.trim() || !linkUrl.trim()) {
+      toast.warn("Preencha o texto e o URL do link.");
+      return;
+    }
+    const selection = window.getSelection();
+    if (!selection.rangeCount) {
+      toast.warn("Selecione o local onde deseja inserir o link.");
+      return;
+    }
+    const range = selection.getRangeAt(0);
+    const a = document.createElement("a");
+    a.href = linkUrl.trim();
+    a.textContent = linkText.trim();
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    range.deleteContents();
+    range.insertNode(a);
+    setLinkText("");
+    setLinkUrl("");
+    editorRef.current.focus();
   };
 
   const criarPost = async () => {
@@ -154,6 +180,17 @@ export default function AdminPosts() {
     editorRef.current.focus();
   };
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      toast.info("Você saiu da conta.");
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Erro ao fazer logout:", error);
+      toast.error("Erro ao sair, tente novamente.");
+    }
+  };
+
   const filteredPosts = posts.filter(
     (post) =>
       (post.titulo?.toLowerCase() || "").includes(searchTerm.toLowerCase()) ||
@@ -164,6 +201,22 @@ export default function AdminPosts() {
     <div className="admin-container">
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       <h1>Administração de Artigos</h1>
+      <div style={{ textAlign: "right", marginBottom: "1rem" }}>
+        <button
+          onClick={handleLogout}
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#ff5a5f",
+            color: "#fff",
+            border: "none",
+            borderRadius: "6px",
+            cursor: "pointer",
+            fontWeight: "bold",
+          }}
+        >
+          Sair
+        </button>
+      </div>
 
       <input
         type="text"
@@ -205,9 +258,15 @@ export default function AdminPosts() {
       </label>
 
       <div className="editor-toolbar">
-        <button onClick={() => exec("bold")}><b>B</b></button>
-        <button onClick={() => exec("italic")}><i>I</i></button>
-        <button onClick={() => exec("underline")}><u>U</u></button>
+        <button onClick={() => exec("bold")}>
+          <b>B</b>
+        </button>
+        <button onClick={() => exec("italic")}>
+          <i>I</i>
+        </button>
+        <button onClick={() => exec("underline")}>
+          <u>U</u>
+        </button>
         <select onChange={(e) => exec("fontSize", e.target.value)} defaultValue="3">
           <option value="1">Muito Pequeno</option>
           <option value="2">Pequeno</option>
@@ -232,6 +291,25 @@ export default function AdminPosts() {
           style={{ width: "200px", marginLeft: "auto" }}
         />
         <button onClick={handleImageInsert}>Inserir Imagem</button>
+        <input
+          type="text"
+          placeholder="Texto do link"
+          value={linkText}
+          onChange={(e) => setLinkText(e.target.value)}
+          className="admin-input"
+          style={{ width: "150px", marginLeft: "10px" }}
+        />
+        <input
+          type="text"
+          placeholder="URL do link"
+          value={linkUrl}
+          onChange={(e) => setLinkUrl(e.target.value)}
+          className="admin-input"
+          style={{ width: "250px", marginLeft: "10px" }}
+        />
+        <button onClick={handleInsertLink} style={{ marginLeft: "10px" }}>
+          Inserir Link
+        </button>
         <button onClick={() => exec("removeFormat")} style={{ color: "white" }}>
           Limpar
         </button>
@@ -265,7 +343,9 @@ export default function AdminPosts() {
           <div key={post.id} className="post-card">
             <h3>{post.titulo}</h3>
             <p className="italic">{post.autor}</p>
-            <p className="post-date">Publicado em: {post.dataPublicacao || "Data indisponível"}</p>
+            <p className="post-date">
+              Publicado em: {post.dataPublicacao || "Data indisponível"}
+            </p>
             <p>Categoria: {post.category || "—"}</p>
             <p>{getResumo(post.conteudo)}</p>
             <div className="post-card-footer">

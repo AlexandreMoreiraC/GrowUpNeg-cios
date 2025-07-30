@@ -100,13 +100,13 @@ export default function Blog() {
         </div>
       )}
 
-      <h3 style={{ marginTop: "3rem" }}>Posts Recentes</h3>
+      <h3 style={{ marginTop: "3rem", color:"black"  }}>Posts Recentes</h3>
       <ul>
         {recentPosts.map((post) => (
           <li key={post.id} style={{ margin: "0.5rem 0" }}>
             <Link
               to={`/post/${post.id}`}
-              style={{ color: "#1d3557", textDecoration: "none" }}
+              style={{ fontSize: "15px", color: "#1d3557", textDecoration: "none" }}
             >
               {post.titulo} <small>({post.category})</small>
             </Link>

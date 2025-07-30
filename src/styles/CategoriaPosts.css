@@ -1,88 +1,112 @@
 .posts-list {
-  max-width: 900px;
-  margin: 40px auto 80px auto;
-  padding: 0 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #222;
+  max-width: 900px !important;
+  margin: 40px auto 80px auto !important;
+  padding: 0 20px !important;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  color: #222 !important;
 }
 
 .posts-list h2 {
-  font-size: 2rem;
-  color: #1d3557;
-  margin-bottom: 1.5rem;
-  text-transform: capitalize;
-  font-weight: 700;
-  text-align: center;
+  font-size: 2rem !important;
+  color: #1d3557 !important;
+  margin-bottom: 1.5rem !important;
+  text-transform: capitalize !important;
+  font-weight: 700 !important;
+  text-align: center !important;
 }
 
 .post-card {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  color: #000;
-  user-select: text;
+  background-color: #fff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05) !important;
+  padding: 1.25rem 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  cursor: pointer !important;
+  color: #000 !important;
+  user-select: text !important;
 }
 
 .post-card:hover,
 .post-card:focus-visible {
-  outline: none;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  outline: none !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12) !important;
 }
 
 .post-card:focus {
-  outline: 3px solid #ff7f50;
-  outline-offset: 4px;
+  outline: 3px solid #ff7f50 !important;
+  outline-offset: 4px !important;
 }
 
 .post-card h3 {
-  font-size: 1.5rem;
-  margin: 0 0 0.25rem 0;
-  color: #1d3557;
-  line-height: 1.3;
-  font-weight: 700;
+  font-size: 1.5rem !important;
+  margin: 0 0 0.25rem 0 !important;
+  color: #1d3557 !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
 }
 
 .post-card .italic {
-  font-style: italic;
-  color: #6c757d;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  font-style: italic !important;
+  color: #6c757d !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 0.9rem !important;
 }
 
 .post-card p {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #444;
-  margin: 0.4rem 0;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  color: #444 !important;
+  margin: 0.4rem 0 !important;
 }
 
 .post-card p:nth-last-child(1) {
-  margin-top: 1rem;
+  margin-top: 1rem !important;
 }
 
+/* Responsivo para tablets e smartphones médios */
 @media (max-width: 600px) {
   .posts-list {
-    padding: 0 10px;
+    padding: 0 10px !important;
   }
 
   .posts-list h2 {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
   }
 
   .post-card {
-    padding: 1rem 1rem;
+    padding: 1rem 1rem !important;
   }
 
   .post-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.2rem !important;
   }
 
   .post-card p {
-    font-size: 0.95rem;
+    font-size: 0.95rem !important;
+  }
+}
+
+/* Responsivo adicional para smartphones pequenos */
+@media (max-width: 480px) {
+  .posts-list {
+    padding: 0 8px !important;
+  }
+
+  .posts-list h2 {
+    font-size: 1.25rem !important;
+  }
+
+  .post-card {
+    padding: 0.75rem 0.75rem !important;
+  }
+
+  .post-card h3 {
+    font-size: 1.05rem !important;
+  }
+
+  .post-card p {
+    font-size: 0.9rem !important;
   }
 }

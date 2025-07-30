@@ -18,9 +18,10 @@
 }
 
 .post h1 {
+  
   font-size: 2.75rem;
   margin-bottom: 1rem;
-  color: inherit;
+  color: rgb(0, 0, 0);
   font-weight: 900;
   letter-spacing: -0.03em;
   text-shadow: none;
@@ -54,12 +55,18 @@
   line-height: 1.8;
 }
 
-/* Aqui adiciono o estilo azul para subtítulos */
-/* Supondo subtítulos sejam h2 e h3, dentro do conteúdo */
-
 .post-content h2,
 .post-content h3 {
-  color: #1e40af; /* azul escuro */
+  color: #2d366e; /* azul escuro */
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+.post-content h2,
+.post-content h3 {
+  color: #2d366e; /* azul escuro */
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   font-weight: 700;
