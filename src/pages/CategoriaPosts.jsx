@@ -1,8 +1,8 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useParams, Link } from "react-router-dom";
+import "../styles/CategoriaPosts.css";
 import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
 import { db } from "../services/firebase";
-import "../styles/CategoriaPosts.css";
 
 const categoriasSlugParaNome = {
   "marketing-digital": "Marketing Digital",
@@ -64,34 +64,35 @@ function CategoriaPosts() {
     fetchPosts();
   }, [slug]);
 
-  if (loading) return <p>Carregando posts...</p>;
-  if (posts.length === 0) return <p>Não há posts nesta categoria.</p>;
+  if (loading) return <p className="categoria-status">Carregando posts...</p>;
+  if (posts.length === 0) return <p className="categoria-status">Não há posts nesta categoria.</p>;
 
   return (
     <>
-      <div className="posts-list">
-        <h2 style={{ textTransform: "capitalize", marginBottom: "20px" }}>
-          {categoriasSlugParaNome[slug]}
-        </h2>
-        {posts.map(post => (
-          <Link
-            key={post.id}
-            to={`/post/${post.id}`}
-            className="post-card"
-            style={{ textDecoration: 'none', color: 'inherit' }}
-          >
-            <h3>{post.titulo}</h3>
-            <p className="italic">{post.autor}</p>
-            <p>Publicado em: {post.dataFormatada}</p>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: post.conteudo.length > 150
-                  ? post.conteudo.slice(0, 150) + "..."
-                  : post.conteudo
-              }}
-            />
-          </Link>
-        ))}
+      <div className="categoria-container">
+        <h2 className="categoria-titulo">{categoriasSlugParaNome[slug]}</h2>
+        <div className="posts-list">
+          {posts.map(post => (
+            <Link
+              key={post.id}
+              to={`/post/${post.id}`}
+              className="post-card"
+            >
+              <div className="post-card-category">{post.category}</div>
+              <h3>{post.titulo}</h3>
+              <p className="italic">{post.autor}</p>
+              <p className="data-publicacao">Publicado em: {post.dataFormatada}</p>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html:
+                    post.conteudo.length > 150
+                      ? post.conteudo.slice(0, 150) + "..."
+                      : post.conteudo,
+                }}
+              />
+            </Link>
+          ))}
+        </div>
       </div>
       <Suspense fallback={<p>Carregando formulário...</p>}>
         <NewsletterForm />

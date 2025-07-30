@@ -20,6 +20,7 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Categorias = lazy(() => import("./pages/Categorias"));
 const CategoriaPosts = lazy(() => import("./pages/CategoriaPosts"));
 
+
 import { auth } from "./services/firebase";
 
 function AnalyticsTracker() {
